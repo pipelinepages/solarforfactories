@@ -1,1280 +1,1381 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Solar power systems designed for pure water and sachet water factories in Nigeria. Reduce generator dependence, stabilize production and control energy costs." />
-  <title>Solar for Factories in Nigeria | Solar Systems for Pure Water Factories</title>
-
-  <style>
-    :root{
-      --bg:#090b0a;
-      --bg-soft:#101310;
-      --panel:#131713;
-      --panel-2:#171c17;
-      --text:#f4f7f2;
-      --muted:#aab3aa;
-      --line:rgba(255,255,255,.09);
-      --yellow:#f7c600;
-      --yellow-2:#ffe76a;
-      --green:#82d173;
-      --green-dark:#142316;
-      --white:#ffffff;
-      --shadow:0 20px 60px rgba(0,0,0,.35);
-      --radius:24px;
-      --radius-sm:16px;
-      --max:1180px;
-    }
-
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      background:
-        radial-gradient(circle at 85% 10%, rgba(247,198,0,.12), transparent 32%),
-        radial-gradient(circle at 10% 30%, rgba(130,209,115,.07), transparent 30%),
-        var(--bg);
-      color:var(--text);
-      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height:1.6;
-      -webkit-font-smoothing:antialiased;
-    }
-
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-    button,input,textarea,select{font:inherit}
-
-    .container{
-      width:min(calc(100% - 40px), var(--max));
-      margin:0 auto;
-    }
-
-    .nav{
-      position:sticky;
-      top:0;
-      z-index:50;
-      backdrop-filter:blur(16px);
-      background:rgba(9,11,10,.78);
-      border-bottom:1px solid var(--line);
-    }
-
-    .nav-inner{
-      height:76px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:24px;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      font-weight:850;
-      letter-spacing:-.02em;
-    }
-
-    .brand-mark{
-      width:38px;
-      height:38px;
-      border-radius:12px;
-      background:linear-gradient(135deg,var(--yellow),#ff9f0a);
-      display:grid;
-      place-items:center;
-      color:#101010;
-      box-shadow:0 0 0 6px rgba(247,198,0,.08);
-    }
-
-    .brand small{
-      display:block;
-      font-size:.72rem;
-      color:var(--muted);
-      font-weight:650;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      margin-top:-2px;
-    }
-
-    .nav-links{
-      display:flex;
-      align-items:center;
-      gap:28px;
-      color:#d5ddd5;
-      font-size:.93rem;
-    }
-
-    .nav-links a:hover{color:var(--white)}
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      border-radius:999px;
-      padding:14px 22px;
-      font-weight:800;
-      transition:.2s ease;
-      border:1px solid transparent;
-      cursor:pointer;
-    }
-
-    .btn-primary{
-      background:var(--yellow);
-      color:#111;
-      box-shadow:0 10px 30px rgba(247,198,0,.16);
-    }
-
-    .btn-primary:hover{
-      transform:translateY(-2px);
-      background:var(--yellow-2);
-    }
-
-    .btn-secondary{
-      background:rgba(255,255,255,.04);
-      border-color:var(--line);
-      color:var(--white);
-    }
-
-    .btn-secondary:hover{
-      background:rgba(255,255,255,.08);
-      transform:translateY(-2px);
-    }
-
-    .hero{
-      padding:88px 0 70px;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .hero-grid{
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:58px;
-      align-items:center;
-    }
-
-    .eyebrow{
-      display:inline-flex;
-      align-items:center;
-      gap:9px;
-      padding:8px 12px;
-      border-radius:999px;
-      background:rgba(247,198,0,.08);
-      color:#fbe06c;
-      border:1px solid rgba(247,198,0,.18);
-      font-size:.82rem;
-      font-weight:800;
-      letter-spacing:.06em;
-      text-transform:uppercase;
-      margin-bottom:22px;
-    }
-
-    .dot{
-      width:8px;
-      height:8px;
-      border-radius:50%;
-      background:var(--yellow);
-      box-shadow:0 0 0 5px rgba(247,198,0,.12);
-    }
-
-    h1,h2,h3,p{margin-top:0}
-    h1{
-      font-size:clamp(3rem,7vw,6.1rem);
-      line-height:.94;
-      letter-spacing:-.07em;
-      margin-bottom:26px;
-      max-width:900px;
-    }
-
-    h1 .accent{color:var(--yellow)}
-
-    .hero-copy{
-      font-size:1.16rem;
-      color:#c1c9c1;
-      max-width:680px;
-      margin-bottom:30px;
-    }
-
-    .hero-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-bottom:32px;
-    }
-
-    .micro-proof{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px 18px;
-      color:#aeb7ae;
-      font-size:.9rem;
-    }
-
-    .micro-proof span{
-      display:flex;
-      align-items:center;
-      gap:8px;
-    }
-
-    .check{
-      width:19px;
-      height:19px;
-      border-radius:50%;
-      display:grid;
-      place-items:center;
-      background:rgba(130,209,115,.12);
-      color:var(--green);
-      font-weight:900;
-      flex:0 0 auto;
-    }
-
-    .hero-card{
-      border:1px solid var(--line);
-      background:
-        linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.025)),
-        var(--panel);
-      border-radius:32px;
-      padding:28px;
-      box-shadow:var(--shadow);
-      position:relative;
-      overflow:hidden;
-    }
-
-    .hero-card::before{
-      content:"";
-      position:absolute;
-      inset:-25% -20% auto auto;
-      width:260px;
-      height:260px;
-      border-radius:50%;
-      background:rgba(247,198,0,.1);
-      filter:blur(10px);
-    }
-
-    .system-visual{
-      min-height:460px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      position:relative;
-      z-index:1;
-    }
-
-    .visual-top{
-      display:flex;
-      justify-content:space-between;
-      gap:20px;
-      align-items:flex-start;
-    }
-
-    .visual-label{
-      font-size:.78rem;
-      color:var(--muted);
-      text-transform:uppercase;
-      letter-spacing:.1em;
-      font-weight:800;
-    }
-
-    .visual-title{
-      font-size:1.65rem;
-      font-weight:850;
-      letter-spacing:-.04em;
-      margin-top:7px;
-    }
-
-    .status{
-      padding:8px 11px;
-      border-radius:999px;
-      background:rgba(130,209,115,.11);
-      color:#9fe593;
-      border:1px solid rgba(130,209,115,.16);
-      font-size:.78rem;
-      font-weight:800;
-      white-space:nowrap;
-    }
-
-    .factory{
-      margin:22px 0 20px;
-      padding:24px;
-      border-radius:22px;
-      background:#0d100e;
-      border:1px solid rgba(255,255,255,.07);
-    }
-
-    .solar-roof{
-      display:grid;
-      grid-template-columns:repeat(5,1fr);
-      gap:7px;
-      transform:skewX(-9deg);
-      margin:10px 10px 22px;
-    }
-
-    .panel-cell{
-      height:44px;
-      border-radius:6px;
-      background:linear-gradient(145deg,#253842,#0f1c25);
-      border:1px solid rgba(130,209,255,.14);
-      box-shadow:inset 0 0 0 1px rgba(255,255,255,.025);
-    }
-
-    .factory-body{
-      display:grid;
-      grid-template-columns:1.3fr .7fr;
-      gap:10px;
-    }
-
-    .factory-block,.factory-side{
-      min-height:92px;
-      border-radius:12px;
-      background:linear-gradient(180deg,#242a24,#171c17);
-      border:1px solid rgba(255,255,255,.06);
-      position:relative;
-      overflow:hidden;
-    }
-
-    .factory-block::before{
-      content:"PURE WATER";
-      position:absolute;
-      left:16px;
-      top:14px;
-      color:#f5f7f5;
-      font-weight:900;
-      letter-spacing:.07em;
-      font-size:.72rem;
-    }
-
-    .factory-block::after{
-      content:"";
-      position:absolute;
-      left:16px;
-      right:16px;
-      bottom:18px;
-      height:22px;
-      background:repeating-linear-gradient(90deg,#5b655b 0 8px,transparent 8px 14px);
-      opacity:.8;
-    }
-
-    .flow{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:10px;
-      margin-top:14px;
-    }
-
-    .flow-card{
-      padding:14px;
-      border-radius:14px;
-      background:rgba(255,255,255,.03);
-      border:1px solid var(--line);
-    }
-
-    .flow-card b{
-      display:block;
-      font-size:.92rem;
-      margin-bottom:4px;
-    }
-
-    .flow-card span{
-      color:var(--muted);
-      font-size:.76rem;
-    }
-
-    .strip{
-      border-top:1px solid var(--line);
-      border-bottom:1px solid var(--line);
-      background:rgba(255,255,255,.018);
-    }
-
-    .strip-inner{
-      min-height:92px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      flex-wrap:wrap;
-      gap:16px 42px;
-      color:#d3dbd3;
-      text-align:center;
-    }
-
-    .strip-inner strong{color:var(--white)}
-    .strip-item{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      font-size:.93rem;
-    }
-
-    section{padding:92px 0}
-    .section-kicker{
-      color:var(--yellow);
-      font-weight:850;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      font-size:.78rem;
-      margin-bottom:12px;
-    }
-
-    .section-head{
-      max-width:760px;
-      margin-bottom:44px;
-    }
-
-    .section-head h2{
-      font-size:clamp(2.2rem,5vw,4rem);
-      letter-spacing:-.055em;
-      line-height:1.02;
-      margin-bottom:18px;
-    }
-
-    .section-head p{
-      color:var(--muted);
-      font-size:1.08rem;
-      max-width:690px;
-    }
-
-    .problem-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:16px;
-    }
-
-    .card{
-      background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.02));
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:28px;
-    }
-
-    .card-icon{
-      width:48px;
-      height:48px;
-      border-radius:14px;
-      display:grid;
-      place-items:center;
-      background:rgba(247,198,0,.1);
-      color:var(--yellow);
-      margin-bottom:22px;
-      font-size:1.2rem;
-      font-weight:900;
-    }
-
-    .card h3{
-      font-size:1.25rem;
-      letter-spacing:-.03em;
-      margin-bottom:10px;
-    }
-
-    .card p{
-      color:var(--muted);
-      margin-bottom:0;
-      font-size:.96rem;
-    }
-
-    .contrast{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:18px;
-      margin-top:38px;
-    }
-
-    .contrast-card{
-      border-radius:28px;
-      padding:30px;
-      border:1px solid var(--line);
-    }
-
-    .contrast-card.bad{
-      background:linear-gradient(180deg,rgba(255,79,79,.07),rgba(255,255,255,.018));
-    }
-
-    .contrast-card.good{
-      background:linear-gradient(180deg,rgba(130,209,115,.08),rgba(255,255,255,.018));
-    }
-
-    .contrast-card h3{
-      font-size:1.4rem;
-      margin-bottom:18px;
-    }
-
-    .list{
-      display:grid;
-      gap:13px;
-      padding:0;
-      margin:0;
-      list-style:none;
-    }
-
-    .list li{
-      display:flex;
-      align-items:flex-start;
-      gap:11px;
-      color:#cbd3cb;
-    }
-
-    .list .x,.list .tick{
-      width:21px;
-      height:21px;
-      border-radius:50%;
-      display:grid;
-      place-items:center;
-      flex:0 0 auto;
-      font-size:.75rem;
-      font-weight:900;
-      margin-top:2px;
-    }
-
-    .list .x{background:rgba(255,79,79,.1);color:#ff8d8d}
-    .list .tick{background:rgba(130,209,115,.11);color:#9fe593}
-
-    .offer{
-      background:
-        radial-gradient(circle at 80% 30%, rgba(247,198,0,.11), transparent 27%),
-        var(--bg-soft);
-      border-top:1px solid var(--line);
-      border-bottom:1px solid var(--line);
-    }
-
-    .offer-wrap{
-      display:grid;
-      grid-template-columns:.86fr 1.14fr;
-      gap:50px;
-      align-items:start;
-    }
-
-    .offer-sticky{
-      position:sticky;
-      top:110px;
-    }
-
-    .offer-sticky h2{
-      font-size:clamp(2.4rem,5vw,4.2rem);
-      line-height:1;
-      letter-spacing:-.06em;
-      margin-bottom:18px;
-    }
-
-    .offer-sticky p{
-      color:var(--muted);
-      max-width:520px;
-      font-size:1.04rem;
-    }
-
-    .offer-stack{
-      display:grid;
-      gap:14px;
-    }
-
-    .offer-item{
-      display:grid;
-      grid-template-columns:auto 1fr auto;
-      gap:16px;
-      align-items:start;
-      padding:22px;
-      border-radius:20px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.025);
-    }
-
-    .offer-num{
-      width:34px;
-      height:34px;
-      border-radius:10px;
-      display:grid;
-      place-items:center;
-      background:var(--yellow);
-      color:#111;
-      font-weight:900;
-    }
-
-    .offer-item h3{
-      font-size:1.06rem;
-      margin-bottom:5px;
-    }
-
-    .offer-item p{
-      color:var(--muted);
-      font-size:.9rem;
-      margin-bottom:0;
-    }
-
-    .tag{
-      font-size:.7rem;
-      padding:6px 8px;
-      border-radius:999px;
-      background:rgba(130,209,115,.09);
-      color:#a6e59b;
-      border:1px solid rgba(130,209,115,.13);
-      font-weight:800;
-      white-space:nowrap;
-    }
-
-    .bonus{
-      margin-top:18px;
-      padding:24px;
-      border:1px solid rgba(247,198,0,.18);
-      background:rgba(247,198,0,.055);
-      border-radius:22px;
-    }
-
-    .bonus-title{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      font-weight:900;
-      margin-bottom:14px;
-    }
-
-    .bonus-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:10px;
-    }
-
-    .bonus-card{
-      padding:14px;
-      background:rgba(0,0,0,.16);
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.06);
-      color:#d8ded8;
-      font-size:.86rem;
-    }
-
-    .promise{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:24px;
-      align-items:center;
-      padding:34px;
-      border-radius:30px;
-      background:linear-gradient(135deg,#172419,#0e130f);
-      border:1px solid rgba(130,209,115,.16);
-      margin-top:34px;
-    }
-
-    .promise h3{
-      font-size:1.7rem;
-      letter-spacing:-.04em;
-      margin-bottom:9px;
-    }
-
-    .promise p{color:#b7c2b7;margin-bottom:0}
-    .promise-box{
-      padding:20px;
-      border-radius:18px;
-      background:rgba(255,255,255,.035);
-      border:1px solid rgba(255,255,255,.07);
-      font-weight:750;
-    }
-
-    .process-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:15px;
-    }
-
-    .step{
-      padding:26px;
-      border-radius:22px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.025);
-    }
-
-    .step-num{
-      font-size:.76rem;
-      text-transform:uppercase;
-      letter-spacing:.1em;
-      color:var(--yellow);
-      font-weight:900;
-      margin-bottom:26px;
-    }
-
-    .step h3{
-      font-size:1.1rem;
-      margin-bottom:9px;
-    }
-
-    .step p{
-      color:var(--muted);
-      font-size:.9rem;
-      margin-bottom:0;
-    }
-
-    .fit-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:20px;
-    }
-
-    .fit-card{
-      padding:30px;
-      border-radius:24px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.025);
-    }
-
-    .fit-card h3{
-      font-size:1.3rem;
-      margin-bottom:18px;
-    }
-
-    .faq{
-      display:grid;
-      gap:12px;
-      max-width:880px;
-      margin:0 auto;
-    }
-
-    details{
-      border:1px solid var(--line);
-      border-radius:18px;
-      padding:0 20px;
-      background:rgba(255,255,255,.025);
-    }
-
-    summary{
-      list-style:none;
-      cursor:pointer;
-      padding:20px 0;
-      font-weight:800;
-      display:flex;
-      justify-content:space-between;
-      gap:20px;
-      align-items:center;
-    }
-
-    summary::-webkit-details-marker{display:none}
-    summary::after{
-      content:"+";
-      font-size:1.35rem;
-      color:var(--yellow);
-    }
-
-    details[open] summary::after{content:"–"}
-
-    details p{
-      padding:0 0 20px;
-      color:var(--muted);
-      margin:0;
-    }
-
-    .cta-section{
-      padding:74px 0 96px;
-    }
-
-    .cta-box{
-      padding:54px;
-      border-radius:34px;
-      background:
-        radial-gradient(circle at 80% 20%, rgba(247,198,0,.24), transparent 33%),
-        linear-gradient(135deg,#1a1e18,#101310);
-      border:1px solid rgba(247,198,0,.18);
-      position:relative;
-      overflow:hidden;
-    }
-
-    .cta-box h2{
-      max-width:820px;
-      font-size:clamp(2.45rem,5vw,4.6rem);
-      line-height:1;
-      letter-spacing:-.06em;
-      margin-bottom:20px;
-    }
-
-    .cta-box p{
-      max-width:700px;
-      color:#c1c8c1;
-      font-size:1.08rem;
-      margin-bottom:28px;
-    }
-
-    .cta-note{
-      margin-top:18px;
-      color:#939c93;
-      font-size:.85rem;
-    }
-
-    footer{
-      border-top:1px solid var(--line);
-      padding:28px 0 42px;
-      color:#919a91;
-      font-size:.86rem;
-    }
-
-    .footer-inner{
-      display:flex;
-      justify-content:space-between;
-      gap:20px;
-      flex-wrap:wrap;
-    }
-
-    .floating-cta{
-      display:none;
-      position:fixed;
-      left:14px;
-      right:14px;
-      bottom:14px;
-      z-index:70;
-    }
-
-    .floating-cta .btn{
-      width:100%;
-      box-shadow:0 15px 45px rgba(0,0,0,.45);
-    }
-
-    @media (max-width: 980px){
-      .nav-links{display:none}
-      .hero-grid,
-      .offer-wrap,
-      .promise{grid-template-columns:1fr}
-      .offer-sticky{position:static}
-      .problem-grid{grid-template-columns:1fr 1fr}
-      .process-grid{grid-template-columns:1fr 1fr}
-      .bonus-grid{grid-template-columns:1fr}
-    }
-
-    @media (max-width: 680px){
-      .container{width:min(calc(100% - 28px), var(--max))}
-      .nav-inner{height:68px}
-      .nav .btn{display:none}
-      .hero{padding:62px 0 52px}
-      h1{font-size:clamp(2.7rem,14vw,4.4rem)}
-      .hero-copy{font-size:1.02rem}
-      .hero-actions{display:grid}
-      .hero-actions .btn{width:100%}
-      .system-visual{min-height:390px}
-      .flow{grid-template-columns:1fr}
-      .problem-grid,
-      .contrast,
-      .process-grid,
-      .fit-grid{grid-template-columns:1fr}
-      section{padding:72px 0}
-      .offer-item{grid-template-columns:auto 1fr}
-      .offer-item .tag{grid-column:2}
-      .cta-box{padding:34px 24px}
-      .floating-cta{display:block}
-      footer{padding-bottom:100px}
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Solar power systems designed for pure water and sachet water factories in Nigeria. Reduce generator dependence, stabilize production and control energy costs." />
+    <title>Solar for Factories in Nigeria | Solar Systems for Pure Water Factories</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="todahslogo.png" type="image/png" />
+
+    <style>
+        :root {
+            --bg: #090b0a;
+            --bg-soft: #101310;
+            --panel: #131713;
+            --panel-2: #171c17;
+            --text: #f4f7f2;
+            --muted: #aab3aa;
+            --line: rgba(255, 255, 255, .09);
+            --yellow: #f7c600;
+            --yellow-2: #ffe76a;
+            --green: #82d173;
+            --green-dark: #142316;
+            --white: #ffffff;
+            --shadow: 0 20px 60px rgba(0, 0, 0, .35);
+            --radius: 24px;
+            --radius-sm: 16px;
+            --max: 1180px;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+        html {
+            scroll-behavior: smooth
+        }
+        body {
+            margin: 0;
+            background:
+                radial-gradient(circle at 85% 10%, rgba(247, 198, 0, .12), transparent 32%),
+                radial-gradient(circle at 10% 30%, rgba(130, 209, 115, .07), transparent 30%),
+                var(--bg);
+            color: var(--text);
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+        img {
+            max-width: 100%;
+            display: block
+        }
+        button,
+        input,
+        textarea,
+        select {
+            font: inherit
+        }
+
+        .container {
+            width: min(calc(100% - 40px), var(--max));
+            margin: 0 auto;
+        }
+
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(16px);
+            background: rgba(9, 11, 10, .78);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .nav-inner {
+            height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 850;
+            letter-spacing: -.02em;
+        }
+
+        .brand-mark {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: #111;
+            display: grid;
+            place-items: center;
+        }
+
+        .brand-mark img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .brand small {
+            display: block;
+            font-size: .72rem;
+            color: var(--muted);
+            font-weight: 650;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            margin-top: -2px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            color: #d5ddd5;
+            font-size: .93rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--white)
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border-radius: 999px;
+            padding: 14px 22px;
+            font-weight: 800;
+            transition: .2s ease;
+            border: 1px solid transparent;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--yellow);
+            color: #111;
+            box-shadow: 0 10px 30px rgba(247, 198, 0, .16);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            background: var(--yellow-2);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, .04);
+            border-color: var(--line);
+            color: var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, .08);
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            padding: 88px 0 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            gap: 58px;
+            align-items: center;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(247, 198, 0, .08);
+            color: #fbe06c;
+            border: 1px solid rgba(247, 198, 0, .18);
+            font-size: .82rem;
+            font-weight: 800;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--yellow);
+            box-shadow: 0 0 0 5px rgba(247, 198, 0, .12);
+        }
+
+        h1,
+        h2,
+        h3,
+        p {
+            margin-top: 0
+        }
+        h1 {
+            font-size: clamp(3rem, 7vw, 6.1rem);
+            line-height: .94;
+            letter-spacing: -.07em;
+            margin-bottom: 26px;
+            max-width: 900px;
+        }
+
+        h1 .accent {
+            color: var(--yellow)
+        }
+
+        .hero-copy {
+            font-size: 1.16rem;
+            color: #c1c9c1;
+            max-width: 680px;
+            margin-bottom: 30px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .micro-proof {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 18px;
+            color: #aeb7ae;
+            font-size: .9rem;
+        }
+
+        .micro-proof span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .check {
+            width: 19px;
+            height: 19px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: rgba(130, 209, 115, .12);
+            color: var(--green);
+            font-weight: 900;
+            flex: 0 0 auto;
+        }
+
+        .hero-card {
+            border: 1px solid var(--line);
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .025)),
+                var(--panel);
+            border-radius: 32px;
+            padding: 28px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-card::before {
+            content: "";
+            position: absolute;
+            inset: -25% -20% auto auto;
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            background: rgba(247, 198, 0, .1);
+            filter: blur(10px);
+        }
+
+        .system-visual {
+            min-height: 460px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+        }
+
+        .visual-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .visual-label {
+            font-size: .78rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            font-weight: 800;
+        }
+
+        .visual-title {
+            font-size: 1.65rem;
+            font-weight: 850;
+            letter-spacing: -.04em;
+            margin-top: 7px;
+        }
+
+        .status {
+            padding: 8px 11px;
+            border-radius: 999px;
+            background: rgba(130, 209, 115, .11);
+            color: #9fe593;
+            border: 1px solid rgba(130, 209, 115, .16);
+            font-size: .78rem;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .factory {
+            margin: 22px 0 20px;
+            padding: 24px;
+            border-radius: 22px;
+            background: #0d100e;
+            border: 1px solid rgba(255, 255, 255, .07);
+        }
+
+        .solar-roof {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 7px;
+            transform: skewX(-9deg);
+            margin: 10px 10px 22px;
+        }
+
+        .panel-cell {
+            height: 44px;
+            border-radius: 6px;
+            background: linear-gradient(145deg, #253842, #0f1c25);
+            border: 1px solid rgba(130, 209, 255, .14);
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .025);
+        }
+
+        .factory-body {
+            display: grid;
+            grid-template-columns: 1.3fr .7fr;
+            gap: 10px;
+        }
+
+        .factory-block,
+        .factory-side {
+            min-height: 92px;
+            border-radius: 12px;
+            background: linear-gradient(180deg, #242a24, #171c17);
+            border: 1px solid rgba(255, 255, 255, .06);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .factory-block::before {
+            content: "PURE WATER";
+            position: absolute;
+            left: 16px;
+            top: 14px;
+            color: #f5f7f5;
+            font-weight: 900;
+            letter-spacing: .07em;
+            font-size: .72rem;
+        }
+
+        .factory-block::after {
+            content: "";
+            position: absolute;
+            left: 16px;
+            right: 16px;
+            bottom: 18px;
+            height: 22px;
+            background: repeating-linear-gradient(90deg, #5b655b 0 8px, transparent 8px 14px);
+            opacity: .8;
+        }
+
+        .flow {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .flow-card {
+            padding: 14px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, .03);
+            border: 1px solid var(--line);
+        }
+
+        .flow-card b {
+            display: block;
+            font-size: .92rem;
+            margin-bottom: 4px;
+        }
+
+        .flow-card span {
+            color: var(--muted);
+            font-size: .76rem;
+        }
+
+        .strip {
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            background: rgba(255, 255, 255, .018);
+        }
+
+        .strip-inner {
+            min-height: 92px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 16px 42px;
+            color: #d3dbd3;
+            text-align: center;
+        }
+
+        .strip-inner strong {
+            color: var(--white)
+        }
+        .strip-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: .93rem;
+        }
+
+        section {
+            padding: 92px 0
+        }
+        .section-kicker {
+            color: var(--yellow);
+            font-weight: 850;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            font-size: .78rem;
+            margin-bottom: 12px;
+        }
+
+        .section-head {
+            max-width: 760px;
+            margin-bottom: 44px;
+        }
+
+        .section-head h2 {
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            letter-spacing: -.055em;
+            line-height: 1.02;
+            margin-bottom: 18px;
+        }
+
+        .section-head p {
+            color: var(--muted);
+            font-size: 1.08rem;
+            max-width: 690px;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, .045), rgba(255, 255, 255, .02));
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 28px;
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            background: rgba(247, 198, 0, .1);
+            color: var(--yellow);
+            margin-bottom: 22px;
+            font-size: 1.2rem;
+            font-weight: 900;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            letter-spacing: -.03em;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: var(--muted);
+            margin-bottom: 0;
+            font-size: .96rem;
+        }
+
+        .contrast {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-top: 38px;
+        }
+
+        .contrast-card {
+            border-radius: 28px;
+            padding: 30px;
+            border: 1px solid var(--line);
+        }
+
+        .contrast-card.bad {
+            background: linear-gradient(180deg, rgba(255, 79, 79, .07), rgba(255, 255, 255, .018));
+        }
+
+        .contrast-card.good {
+            background: linear-gradient(180deg, rgba(130, 209, 115, .08), rgba(255, 255, 255, .018));
+        }
+
+        .contrast-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 18px;
+        }
+
+        .list {
+            display: grid;
+            gap: 13px;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 11px;
+            color: #cbd3cb;
+        }
+
+        .list .x,
+        .list .tick {
+            width: 21px;
+            height: 21px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            flex: 0 0 auto;
+            font-size: .75rem;
+            font-weight: 900;
+            margin-top: 2px;
+        }
+
+        .list .x {
+            background: rgba(255, 79, 79, .1);
+            color: #ff8d8d
+        }
+        .list .tick {
+            background: rgba(130, 209, 115, .11);
+            color: #9fe593
+        }
+
+        .offer {
+            background:
+                radial-gradient(circle at 80% 30%, rgba(247, 198, 0, .11), transparent 27%),
+                var(--bg-soft);
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .offer-wrap {
+            display: grid;
+            grid-template-columns: .86fr 1.14fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .offer-sticky {
+            position: sticky;
+            top: 110px;
+        }
+
+        .offer-sticky h2 {
+            font-size: clamp(2.4rem, 5vw, 4.2rem);
+            line-height: 1;
+            letter-spacing: -.06em;
+            margin-bottom: 18px;
+        }
+
+        .offer-sticky p {
+            color: var(--muted);
+            max-width: 520px;
+            font-size: 1.04rem;
+        }
+
+        .offer-stack {
+            display: grid;
+            gap: 14px;
+        }
+
+        .offer-item {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 16px;
+            align-items: start;
+            padding: 22px;
+            border-radius: 20px;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, .025);
+        }
+
+        .offer-num {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            display: grid;
+            place-items: center;
+            background: var(--yellow);
+            color: #111;
+            font-weight: 900;
+        }
+
+        .offer-item h3 {
+            font-size: 1.06rem;
+            margin-bottom: 5px;
+        }
+
+        .offer-item p {
+            color: var(--muted);
+            font-size: .9rem;
+            margin-bottom: 0;
+        }
+
+        .tag {
+            font-size: .7rem;
+            padding: 6px 8px;
+            border-radius: 999px;
+            background: rgba(130, 209, 115, .09);
+            color: #a6e59b;
+            border: 1px solid rgba(130, 209, 115, .13);
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .bonus {
+            margin-top: 18px;
+            padding: 24px;
+            border: 1px solid rgba(247, 198, 0, .18);
+            background: rgba(247, 198, 0, .055);
+            border-radius: 22px;
+        }
+
+        .bonus-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 900;
+            margin-bottom: 14px;
+        }
+
+        .bonus-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .bonus-card {
+            padding: 14px;
+            background: rgba(0, 0, 0, .16);
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, .06);
+            color: #d8ded8;
+            font-size: .86rem;
+        }
+
+        .promise {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            align-items: center;
+            padding: 34px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, #172419, #0e130f);
+            border: 1px solid rgba(130, 209, 115, .16);
+            margin-top: 34px;
+        }
+
+        .promise h3 {
+            font-size: 1.7rem;
+            letter-spacing: -.04em;
+            margin-bottom: 9px;
+        }
+
+        .promise p {
+            color: #b7c2b7;
+            margin-bottom: 0
+        }
+        .promise-box {
+            padding: 20px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, .035);
+            border: 1px solid rgba(255, 255, 255, .07);
+            font-weight: 750;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .step {
+            padding: 26px;
+            border-radius: 22px;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, .025);
+        }
+
+        .step-num {
+            font-size: .76rem;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            color: var(--yellow);
+            font-weight: 900;
+            margin-bottom: 26px;
+        }
+
+        .step h3 {
+            font-size: 1.1rem;
+            margin-bottom: 9px;
+        }
+
+        .step p {
+            color: var(--muted);
+            font-size: .9rem;
+            margin-bottom: 0;
+        }
+
+        .fit-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .fit-card {
+            padding: 30px;
+            border-radius: 24px;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, .025);
+        }
+
+        .fit-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 18px;
+        }
+
+        .faq {
+            display: grid;
+            gap: 12px;
+            max-width: 880px;
+            margin: 0 auto;
+        }
+
+        details {
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 0 20px;
+            background: rgba(255, 255, 255, .025);
+        }
+
+        summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 20px 0;
+            font-weight: 800;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none
+        }
+        summary::after {
+            content: "+";
+            font-size: 1.35rem;
+            color: var(--yellow);
+        }
+
+        details[open] summary::after {
+            content: "–"
+        }
+
+        details p {
+            padding: 0 0 20px;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        .cta-section {
+            padding: 74px 0 96px;
+        }
+
+        .cta-box {
+            padding: 54px;
+            border-radius: 34px;
+            background:
+                radial-gradient(circle at 80% 20%, rgba(247, 198, 0, .24), transparent 33%),
+                linear-gradient(135deg, #1a1e18, #101310);
+            border: 1px solid rgba(247, 198, 0, .18);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-box h2 {
+            max-width: 820px;
+            font-size: clamp(2.45rem, 5vw, 4.6rem);
+            line-height: 1;
+            letter-spacing: -.06em;
+            margin-bottom: 20px;
+        }
+
+        .cta-box p {
+            max-width: 700px;
+            color: #c1c8c1;
+            font-size: 1.08rem;
+            margin-bottom: 28px;
+        }
+
+        .cta-note {
+            margin-top: 18px;
+            color: #939c93;
+            font-size: .85rem;
+        }
+
+        footer {
+            border-top: 1px solid var(--line);
+            padding: 28px 0 42px;
+            color: #919a91;
+            font-size: .86rem;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .floating-cta {
+            display: none;
+            position: fixed;
+            left: 14px;
+            right: 14px;
+            bottom: 14px;
+            z-index: 70;
+        }
+
+        .floating-cta .btn {
+            width: 100%;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, .45);
+        }
+
+        @media (max-width: 980px) {
+            .nav-links {
+                display: none
+            }
+            .hero-grid,
+            .offer-wrap,
+            .promise {
+                grid-template-columns: 1fr
+            }
+            .offer-sticky {
+                position: static
+            }
+            .problem-grid {
+                grid-template-columns: 1fr 1fr
+            }
+            .process-grid {
+                grid-template-columns: 1fr 1fr
+            }
+            .bonus-grid {
+                grid-template-columns: 1fr
+            }
+        }
+
+        @media (max-width: 680px) {
+            .container {
+                width: min(calc(100% - 28px), var(--max))
+            }
+            .nav-inner {
+                height: 68px
+            }
+            .nav .btn {
+                display: none
+            }
+            .hero {
+                padding: 62px 0 52px
+            }
+            h1 {
+                font-size: clamp(2.7rem, 14vw, 4.4rem)
+            }
+            .hero-copy {
+                font-size: 1.02rem
+            }
+            .hero-actions {
+                display: grid
+            }
+            .hero-actions .btn {
+                width: 100%
+            }
+            .system-visual {
+                min-height: 390px
+            }
+            .flow {
+                grid-template-columns: 1fr
+            }
+            .problem-grid,
+            .contrast,
+            .process-grid,
+            .fit-grid {
+                grid-template-columns: 1fr
+            }
+            section {
+                padding: 72px 0
+            }
+            .offer-item {
+                grid-template-columns: auto 1fr
+            }
+            .offer-item .tag {
+                grid-column: 2
+            }
+            .cta-box {
+                padding: 34px 24px
+            }
+            .floating-cta {
+                display: block
+            }
+            footer {
+                padding-bottom: 100px
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-  <!-- Replace the brand name and WhatsApp number before launch. -->
-  <nav class="nav">
-    <div class="container nav-inner">
-      <a class="brand" href="#">
-        <span class="brand-mark">☀</span>
-        <span>
-          Solar for Factories
-          <small>Nigeria</small>
-        </span>
-      </a>
-
-      <div class="nav-links">
-        <a href="#problem">Why Solar</a>
-        <a href="#offer">What You Get</a>
-        <a href="#process">How It Works</a>
-        <a href="#faq">FAQ</a>
-      </div>
-
-      <a class="btn btn-primary" href="https://wa.me/234XXXXXXXXXX?text=Hi%2C%20I%20want%20a%20solar%20energy%20assessment%20for%20my%20pure%20water%20factory.">
-        Request Assessment →
-      </a>
-    </div>
-  </nav>
-
-  <main>
-
-    <section class="hero">
-      <div class="container hero-grid">
-
-        <div>
-          <div class="eyebrow"><span class="dot"></span> Solar systems for pure water factories</div>
-
-          <h1>
-            Your generator isn't just burning diesel.
-            <span class="accent">It's burning profit.</span>
-          </h1>
-
-          <p class="hero-copy">
-            We design and install complete solar power systems for pure water and sachet water factories in Nigeria—so your pumps, treatment equipment, sealing machines and essential factory loads can run with far less dependence on generators.
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="https://wa.me/234XXXXXXXXXX?text=Hi%2C%20I%20want%20a%20solar%20energy%20assessment%20for%20my%20pure%20water%20factory.">
-              Request Your Factory Assessment →
+    <!-- Replace the brand name and WhatsApp number before launch. -->
+    <nav class="nav">
+        <div class="container nav-inner">
+            <a class="brand" href="#">
+                <span class="brand-mark">
+                    <img src="todahslogo.png" alt="Todah's Solar Energy logo" />
+                </span>
+                <span>
+                    Solar for Factories
+                    <small>Nigeria</small>
+                </span>
             </a>
-            <a class="btn btn-secondary" href="#offer">
-              See What’s Included
+
+            <div class="nav-links">
+                <a href="#problem">Why Solar</a>
+                <a href="#offer">What You Get</a>
+                <a href="#process">How It Works</a>
+                <a href="#faq">FAQ</a>
+            </div>
+
+            <a class="btn btn-primary" href="https://wa.me/2349065209762?text=Hi%2C%20I%20want%20a%20solar%20energy%20assessment%20for%20my%20pure%20water%20factory.">
+                Request Assessment →
             </a>
-          </div>
+        </div>
+    </nav>
 
-          <div class="micro-proof">
-            <span><span class="check">✓</span> Custom factory load audit</span>
-            <span><span class="check">✓</span> Generator + grid integration</span>
-            <span><span class="check">✓</span> Installation & after-sales support</span>
-          </div>
+    <main>
+
+        <section class="hero">
+            <div class="container hero-grid">
+
+                <div>
+                    <div class="eyebrow"><span class="dot"></span> Solar systems for pure water factories</div>
+
+                    <h1>
+                        Your generator isn't just burning diesel.
+                        <span class="accent">It's burning profit.</span>
+                    </h1>
+
+                    <p class="hero-copy">
+                        We design and install complete solar power systems for pure water and sachet water factories in Nigeria—so your pumps, treatment equipment, sealing machines and essential factory loads can run with far less dependence on generators.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a class="btn btn-primary" href="https://wa.me/2349065209762?text=Hi%2C%20I%20want%20a%20solar%20energy%20assessment%20for%20my%20pure%20water%20factory.">
+                            Request Your Factory Assessment →
+                        </a>
+                        <a class="btn btn-secondary" href="#offer">
+                            See What's Included
+                        </a>
+                    </div>
+
+                    <div class="micro-proof">
+                        <span><span class="check">✓</span> Custom factory load audit</span>
+                        <span><span class="check">✓</span> Generator + grid integration</span>
+                        <span><span class="check">✓</span> Installation & after-sales support</span>
+                    </div>
+                </div>
+
+                <div class="hero-card">
+                    <div class="system-visual">
+                        <div class="visual-top">
+                            <div>
+                                <div class="visual-label">Built for production</div>
+                                <div class="visual-title">Solar + Battery + Backup</div>
+                            </div>
+                            <div class="status">Factory-ready</div>
+                        </div>
+
+                        <div class="factory">
+                            <div class="solar-roof">
+                                <div class="panel-cell"></div><div class="panel-cell"></div><div class="panel-cell"></div><div class="panel-cell"></div><div class="panel-cell"></div>
+                                <div class="panel-cell"></div><div class="panel-cell"></div><div class="panel-cell"></div><div class="panel-cell"></div><div class="panel-cell"></div>
+                            </div>
+
+                            <div class="factory-body">
+                                <div class="factory-block"></div>
+                                <div class="factory-side"></div>
+                            </div>
+                        </div>
+
+                        <div class="flow">
+                            <div class="flow-card">
+                                <b>☀ Solar</b>
+                                <span>Produces daytime power</span>
+                            </div>
+                            <div class="flow-card">
+                                <b>▣ Battery</b>
+                                <span>Stores power for continuity</span>
+                            </div>
+                            <div class="flow-card">
+                                <b>⚡ Backup</b>
+                                <span>Grid/generator stays integrated</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="strip">
+            <div class="container strip-inner">
+                <div class="strip-item">Designed around <strong>your actual machines</strong></div>
+                <div class="strip-item">Sized around <strong>your production hours</strong></div>
+                <div class="strip-item">Built to reduce <strong>diesel dependence</strong></div>
+                <div class="strip-item">Installed for <strong>long-term reliability</strong></div>
+            </div>
         </div>
 
-        <div class="hero-card">
-          <div class="system-visual">
-            <div class="visual-top">
-              <div>
-                <div class="visual-label">Built for production</div>
-                <div class="visual-title">Solar + Battery + Backup</div>
-              </div>
-              <div class="status">Factory-ready</div>
-            </div>
+        <section id="problem">
+            <div class="container">
+                <div class="section-head">
+                    <div class="section-kicker">The real problem</div>
+                    <h2>Power cuts don't just switch off the lights. They interrupt production.</h2>
+                    <p>
+                        Every time unreliable power forces you back onto the generator, the factory pays again: diesel, servicing, downtime, noise, wear and lost production time.
+                    </p>
+                </div>
 
-            <div class="factory">
-              <div class="solar-roof">
-                <div class="panel-cell"></div><div class="panel-cell"></div><div class="panel-cell"></div><div class="panel-cell"></div><div class="panel-cell"></div>
-                <div class="panel-cell"></div><div class="panel-cell"></div><div class="panel-cell"></div><div class="panel-cell"></div><div class="panel-cell"></div>
-              </div>
+                <div class="problem-grid">
+                    <article class="card">
+                        <div class="card-icon">₦</div>
+                        <h3>Fuel keeps eating margin</h3>
+                        <p>The generator may keep production alive, but every hour it runs adds another operating cost to every bag of water you produce.</p>
+                    </article>
 
-              <div class="factory-body">
-                <div class="factory-block"></div>
-                <div class="factory-side"></div>
-              </div>
-            </div>
+                    <article class="card">
+                        <div class="card-icon">⚙</div>
+                        <h3>Production needs stable power</h3>
+                        <p>Pumps, treatment equipment, sealing machines and factory operations perform better when power is predictable instead of constantly interrupted.</p>
+                    </article>
 
-            <div class="flow">
-              <div class="flow-card">
-                <b>☀ Solar</b>
-                <span>Produces daytime power</span>
-              </div>
-              <div class="flow-card">
-                <b>▣ Battery</b>
-                <span>Stores power for continuity</span>
-              </div>
-              <div class="flow-card">
-                <b>⚡ Backup</b>
-                <span>Grid/generator stays integrated</span>
-              </div>
+                    <article class="card">
+                        <div class="card-icon">↻</div>
+                        <h3>You keep paying for power you never own</h3>
+                        <p>Diesel disappears after you burn it. A properly designed solar system turns part of that recurring spend into infrastructure your factory keeps using.</p>
+                    </article>
+                </div>
+
+                <div class="contrast">
+                    <div class="contrast-card bad">
+                        <h3>Generator-dependent factory</h3>
+                        <ul class="list">
+                            <li><span class="x">×</span><span>Repeated fuel purchases</span></li>
+                            <li><span class="x">×</span><span>Production tied to fuel availability</span></li>
+                            <li><span class="x">×</span><span>More servicing, noise and engine wear</span></li>
+                            <li><span class="x">×</span><span>Energy costs that are difficult to control</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="contrast-card good">
+                        <h3>Solar-assisted factory</h3>
+                        <ul class="list">
+                            <li><span class="tick">✓</span><span>Use sunlight to carry part of your daily production load</span></li>
+                            <li><span class="tick">✓</span><span>Store energy for continuity where appropriate</span></li>
+                            <li><span class="tick">✓</span><span>Keep generator/grid available as intelligent backup</span></li>
+                            <li><span class="tick">✓</span><span>Gain more control over long-term energy spending</span></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-          </div>
+        </section>
+
+        <section class="offer" id="offer">
+            <div class="container offer-wrap">
+
+                <div class="offer-sticky">
+                    <div class="section-kicker">The factory solar package</div>
+                    <h2>Not a generic "solar package." A system built around your production.</h2>
+                    <p>
+                        We first understand what your factory actually runs, when it runs, and which loads are critical. Then we design the system around the business—not the other way around.
+                    </p>
+
+                    <a class="btn btn-primary" style="margin-top:14px" href="https://wa.me/2349065209762?text=Hi%2C%20I%20want%20a%20solar%20energy%20assessment%20for%20my%20pure%20water%20factory.">
+                        Get My Factory Assessed →
+                    </a>
+                </div>
+
+                <div>
+                    <div class="offer-stack">
+
+                        <div class="offer-item">
+                            <div class="offer-num">1</div>
+                            <div>
+                                <h3>On-site factory energy audit</h3>
+                                <p>We identify your major loads, operating hours, startup demands and current generator/grid usage.</p>
+                            </div>
+                            <span class="tag">Included</span>
+                        </div>
+
+                        <div class="offer-item">
+                            <div class="offer-num">2</div>
+                            <div>
+                                <h3>Custom solar system design</h3>
+                                <p>Panels, inverter capacity, battery storage and protection are sized around your actual factory requirements.</p>
+                            </div>
+                            <span class="tag">Included</span>
+                        </div>
+
+                        <div class="offer-item">
+                            <div class="offer-num">3</div>
+                            <div>
+                                <h3>Generator + grid integration</h3>
+                                <p>Your existing power sources remain part of the plan so the factory has a practical backup path when solar alone is not enough.</p>
+                            </div>
+                            <span class="tag">Included</span>
+                        </div>
+
+                        <div class="offer-item">
+                            <div class="offer-num">4</div>
+                            <div>
+                                <h3>Professional installation</h3>
+                                <p>Mounting, cabling, protection, inverter/battery setup and system commissioning handled as one complete installation.</p>
+                            </div>
+                            <span class="tag">Included</span>
+                        </div>
+
+                        <div class="offer-item">
+                            <div class="offer-num">5</div>
+                            <div>
+                                <h3>Production-load prioritisation</h3>
+                                <p>We help separate essential loads from non-essential loads so available solar power is directed where the factory needs it most.</p>
+                            </div>
+                            <span class="tag">Included</span>
+                        </div>
+
+                        <div class="offer-item">
+                            <div class="offer-num">6</div>
+                            <div>
+                                <h3>After-installation support</h3>
+                                <p>System handover, basic operating guidance and support after commissioning so your team is not left guessing.</p>
+                            </div>
+                            <span class="tag">Included</span>
+                        </div>
+
+                    </div>
+
+                    <div class="bonus">
+                        <div class="bonus-title">⚡ Assessment bonuses</div>
+                        <div class="bonus-grid">
+                            <div class="bonus-card"><strong>Generator Reduction Plan</strong><br>See which production periods are best shifted onto solar.</div>
+                            <div class="bonus-card"><strong>Energy Cost Comparison</strong><br>Compare your current power approach with the proposed system.</div>
+                            <div class="bonus-card"><strong>System Expansion Roadmap</strong><br>Know how the setup can grow if your production capacity increases.</div>
+                        </div>
+                    </div>
+
+                    <div class="promise">
+                        <div>
+                            <div class="section-kicker">Risk reversal</div>
+                            <h3>See the plan before you commit to the installation.</h3>
+                            <p>
+                                We do not expect you to buy a random inverter-and-battery bundle. Your recommendation is based on the factory's measured loads, production schedule and priorities.
+                            </p>
+                        </div>
+                        <div class="promise-box">
+                            No generic sizing. No "one package fits every factory."<br><br>
+                            You get a clear recommendation for your facility before deciding on the full installation.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="process">
+            <div class="container">
+                <div class="section-head">
+                    <div class="section-kicker">Simple process</div>
+                    <h2>From generator dependence to a properly planned solar system.</h2>
+                </div>
+
+                <div class="process-grid">
+                    <div class="step">
+                        <div class="step-num">Step 01</div>
+                        <h3>Request assessment</h3>
+                        <p>Send us your factory location and a few details about your current power setup.</p>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-num">Step 02</div>
+                        <h3>We audit the loads</h3>
+                        <p>We inspect your equipment, operating schedule and current energy usage.</p>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-num">Step 03</div>
+                        <h3>You receive a system plan</h3>
+                        <p>We recommend the system architecture, capacity and practical installation approach.</p>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-num">Step 04</div>
+                        <h3>We install & commission</h3>
+                        <p>Once approved, the system is installed, tested and handed over for operation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="padding-top:20px">
+            <div class="container">
+                <div class="section-head">
+                    <div class="section-kicker">Who this is for</div>
+                    <h2>This works best when power is already a serious business expense.</h2>
+                </div>
+
+                <div class="fit-grid">
+                    <div class="fit-card">
+                        <h3>Good fit</h3>
+                        <ul class="list">
+                            <li><span class="tick">✓</span><span>You run a pure water or sachet water production facility in Nigeria.</span></li>
+                            <li><span class="tick">✓</span><span>Your generator runs regularly to keep production going.</span></li>
+                            <li><span class="tick">✓</span><span>You want to reduce diesel dependence without risking production reliability.</span></li>
+                            <li><span class="tick">✓</span><span>You want a properly engineered system, not just cheap components.</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="fit-card">
+                        <h3>Probably not a fit</h3>
+                        <ul class="list">
+                            <li><span class="x">×</span><span>You only need a tiny backup system for a few lights and fans.</span></li>
+                            <li><span class="x">×</span><span>You want equipment selected without checking your factory loads.</span></li>
+                            <li><span class="x">×</span><span>Your only priority is buying the cheapest possible inverter package.</span></li>
+                            <li><span class="x">×</span><span>You are not ready to invest in more reliable long-term power.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq">
+            <div class="container">
+                <div class="section-head" style="margin-left:auto;margin-right:auto;text-align:center">
+                    <div class="section-kicker">FAQ</div>
+                    <h2>Questions factory owners usually ask.</h2>
+                </div>
+
+                <div class="faq">
+                    <details>
+                        <summary>Can solar run an entire pure water factory?</summary>
+                        <p>
+                            It can power substantial factory loads when the system is correctly sized, but the right design depends on your machines, their startup requirements, operating hours and budget. In some factories, a hybrid solar + battery + generator/grid setup is the most practical approach.
+                        </p>
+                    </details>
+
+                    <details>
+                        <summary>Will I still need my generator?</summary>
+                        <p>
+                            Possibly. The goal is not always to throw away the generator; it is to stop depending on it for every hour of production. We can integrate the generator as backup for periods of unusually high demand, poor solar conditions or other contingencies.
+                        </p>
+                    </details>
+
+                    <details>
+                        <summary>How do you know what size system my factory needs?</summary>
+                        <p>
+                            We start with the factory's actual electrical loads and production schedule. That is why the assessment comes before the final recommendation.
+                        </p>
+                    </details>
+
+                    <details>
+                        <summary>Can the system be expanded later?</summary>
+                        <p>
+                            In many cases, yes—if expansion is considered during the initial design. We can recommend an architecture that leaves room for future production growth where practical.
+                        </p>
+                    </details>
+
+                    <details>
+                        <summary>How much does it cost?</summary>
+                        <p>
+                            There is no responsible one-price answer without knowing your factory load. A small production setup and a large multi-line factory require very different systems. Request an assessment and we can recommend the appropriate capacity and budget range.
+                        </p>
+                    </details>
+
+                    <details>
+                        <summary>What information should I send first?</summary>
+                        <p>
+                            Your factory location, approximate production hours, current generator size, and—if available—a list or photos of the major machines you run. We can take it from there.
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-box">
+                    <div class="section-kicker">Your next step</div>
+                    <h2>Stop paying endlessly for power you could partly produce yourself.</h2>
+                    <p>
+                        Request a factory energy assessment. We'll look at your production loads, current generator usage and operating schedule, then show you what a properly designed solar setup could look like for your factory.
+                    </p>
+
+                    <a class="btn btn-primary" href="https://wa.me/2349065209762?text=Hi%2C%20I%20want%20a%20solar%20energy%20assessment%20for%20my%20pure%20water%20factory.">
+                        Request My Factory Assessment →
+                    </a>
+
+                    <div class="cta-note">
+                        Replace <strong>234XXXXXXXXXX</strong> in this file with your WhatsApp number before publishing.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container footer-inner">
+            <div>© Solar for Factories powered by Todah's Solar Energy. All rights reserved.</div>
+            <div>Solar systems designed around real factory loads.</div>
         </div>
+    </footer>
 
-      </div>
-    </section>
-
-    <div class="strip">
-      <div class="container strip-inner">
-        <div class="strip-item">Designed around <strong>your actual machines</strong></div>
-        <div class="strip-item">Sized around <strong>your production hours</strong></div>
-        <div class="strip-item">Built to reduce <strong>diesel dependence</strong></div>
-        <div class="strip-item">Installed for <strong>long-term reliability</strong></div>
-      </div>
+    <div class="floating-cta">
+        <a class="btn btn-primary" href="https://wa.me/2349065209762?text=Hi%2C%20I%20want%20a%20solar%20energy%20assessment%20for%20my%20pure%20water%20factory.">
+            Request Factory Assessment →
+        </a>
     </div>
-
-    <section id="problem">
-      <div class="container">
-        <div class="section-head">
-          <div class="section-kicker">The real problem</div>
-          <h2>Power cuts don't just switch off the lights. They interrupt production.</h2>
-          <p>
-            Every time unreliable power forces you back onto the generator, the factory pays again: diesel, servicing, downtime, noise, wear and lost production time.
-          </p>
-        </div>
-
-        <div class="problem-grid">
-          <article class="card">
-            <div class="card-icon">₦</div>
-            <h3>Fuel keeps eating margin</h3>
-            <p>The generator may keep production alive, but every hour it runs adds another operating cost to every bag of water you produce.</p>
-          </article>
-
-          <article class="card">
-            <div class="card-icon">⚙</div>
-            <h3>Production needs stable power</h3>
-            <p>Pumps, treatment equipment, sealing machines and factory operations perform better when power is predictable instead of constantly interrupted.</p>
-          </article>
-
-          <article class="card">
-            <div class="card-icon">↻</div>
-            <h3>You keep paying for power you never own</h3>
-            <p>Diesel disappears after you burn it. A properly designed solar system turns part of that recurring spend into infrastructure your factory keeps using.</p>
-          </article>
-        </div>
-
-        <div class="contrast">
-          <div class="contrast-card bad">
-            <h3>Generator-dependent factory</h3>
-            <ul class="list">
-              <li><span class="x">×</span><span>Repeated fuel purchases</span></li>
-              <li><span class="x">×</span><span>Production tied to fuel availability</span></li>
-              <li><span class="x">×</span><span>More servicing, noise and engine wear</span></li>
-              <li><span class="x">×</span><span>Energy costs that are difficult to control</span></li>
-            </ul>
-          </div>
-
-          <div class="contrast-card good">
-            <h3>Solar-assisted factory</h3>
-            <ul class="list">
-              <li><span class="tick">✓</span><span>Use sunlight to carry part of your daily production load</span></li>
-              <li><span class="tick">✓</span><span>Store energy for continuity where appropriate</span></li>
-              <li><span class="tick">✓</span><span>Keep generator/grid available as intelligent backup</span></li>
-              <li><span class="tick">✓</span><span>Gain more control over long-term energy spending</span></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="offer" id="offer">
-      <div class="container offer-wrap">
-
-        <div class="offer-sticky">
-          <div class="section-kicker">The factory solar package</div>
-          <h2>Not a generic “solar package.” A system built around your production.</h2>
-          <p>
-            We first understand what your factory actually runs, when it runs, and which loads are critical. Then we design the system around the business—not the other way around.
-          </p>
-
-          <a class="btn btn-primary" style="margin-top:14px" href="https://wa.me/234XXXXXXXXXX?text=Hi%2C%20I%20want%20a%20solar%20energy%20assessment%20for%20my%20pure%20water%20factory.">
-            Get My Factory Assessed →
-          </a>
-        </div>
-
-        <div>
-          <div class="offer-stack">
-
-            <div class="offer-item">
-              <div class="offer-num">1</div>
-              <div>
-                <h3>On-site factory energy audit</h3>
-                <p>We identify your major loads, operating hours, startup demands and current generator/grid usage.</p>
-              </div>
-              <span class="tag">Included</span>
-            </div>
-
-            <div class="offer-item">
-              <div class="offer-num">2</div>
-              <div>
-                <h3>Custom solar system design</h3>
-                <p>Panels, inverter capacity, battery storage and protection are sized around your actual factory requirements.</p>
-              </div>
-              <span class="tag">Included</span>
-            </div>
-
-            <div class="offer-item">
-              <div class="offer-num">3</div>
-              <div>
-                <h3>Generator + grid integration</h3>
-                <p>Your existing power sources remain part of the plan so the factory has a practical backup path when solar alone is not enough.</p>
-              </div>
-              <span class="tag">Included</span>
-            </div>
-
-            <div class="offer-item">
-              <div class="offer-num">4</div>
-              <div>
-                <h3>Professional installation</h3>
-                <p>Mounting, cabling, protection, inverter/battery setup and system commissioning handled as one complete installation.</p>
-              </div>
-              <span class="tag">Included</span>
-            </div>
-
-            <div class="offer-item">
-              <div class="offer-num">5</div>
-              <div>
-                <h3>Production-load prioritisation</h3>
-                <p>We help separate essential loads from non-essential loads so available solar power is directed where the factory needs it most.</p>
-              </div>
-              <span class="tag">Included</span>
-            </div>
-
-            <div class="offer-item">
-              <div class="offer-num">6</div>
-              <div>
-                <h3>After-installation support</h3>
-                <p>System handover, basic operating guidance and support after commissioning so your team is not left guessing.</p>
-              </div>
-              <span class="tag">Included</span>
-            </div>
-
-          </div>
-
-          <div class="bonus">
-            <div class="bonus-title">⚡ Assessment bonuses</div>
-            <div class="bonus-grid">
-              <div class="bonus-card"><strong>Generator Reduction Plan</strong><br>See which production periods are best shifted onto solar.</div>
-              <div class="bonus-card"><strong>Energy Cost Comparison</strong><br>Compare your current power approach with the proposed system.</div>
-              <div class="bonus-card"><strong>System Expansion Roadmap</strong><br>Know how the setup can grow if your production capacity increases.</div>
-            </div>
-          </div>
-
-          <div class="promise">
-            <div>
-              <div class="section-kicker">Risk reversal</div>
-              <h3>See the plan before you commit to the installation.</h3>
-              <p>
-                We do not expect you to buy a random inverter-and-battery bundle. Your recommendation is based on the factory's measured loads, production schedule and priorities.
-              </p>
-            </div>
-            <div class="promise-box">
-              No generic sizing. No “one package fits every factory.”<br><br>
-              You get a clear recommendation for your facility before deciding on the full installation.
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <section id="process">
-      <div class="container">
-        <div class="section-head">
-          <div class="section-kicker">Simple process</div>
-          <h2>From generator dependence to a properly planned solar system.</h2>
-        </div>
-
-        <div class="process-grid">
-          <div class="step">
-            <div class="step-num">Step 01</div>
-            <h3>Request assessment</h3>
-            <p>Send us your factory location and a few details about your current power setup.</p>
-          </div>
-
-          <div class="step">
-            <div class="step-num">Step 02</div>
-            <h3>We audit the loads</h3>
-            <p>We inspect your equipment, operating schedule and current energy usage.</p>
-          </div>
-
-          <div class="step">
-            <div class="step-num">Step 03</div>
-            <h3>You receive a system plan</h3>
-            <p>We recommend the system architecture, capacity and practical installation approach.</p>
-          </div>
-
-          <div class="step">
-            <div class="step-num">Step 04</div>
-            <h3>We install & commission</h3>
-            <p>Once approved, the system is installed, tested and handed over for operation.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section style="padding-top:20px">
-      <div class="container">
-        <div class="section-head">
-          <div class="section-kicker">Who this is for</div>
-          <h2>This works best when power is already a serious business expense.</h2>
-        </div>
-
-        <div class="fit-grid">
-          <div class="fit-card">
-            <h3>Good fit</h3>
-            <ul class="list">
-              <li><span class="tick">✓</span><span>You run a pure water or sachet water production facility in Nigeria.</span></li>
-              <li><span class="tick">✓</span><span>Your generator runs regularly to keep production going.</span></li>
-              <li><span class="tick">✓</span><span>You want to reduce diesel dependence without risking production reliability.</span></li>
-              <li><span class="tick">✓</span><span>You want a properly engineered system, not just cheap components.</span></li>
-            </ul>
-          </div>
-
-          <div class="fit-card">
-            <h3>Probably not a fit</h3>
-            <ul class="list">
-              <li><span class="x">×</span><span>You only need a tiny backup system for a few lights and fans.</span></li>
-              <li><span class="x">×</span><span>You want equipment selected without checking your factory loads.</span></li>
-              <li><span class="x">×</span><span>Your only priority is buying the cheapest possible inverter package.</span></li>
-              <li><span class="x">×</span><span>You are not ready to invest in more reliable long-term power.</span></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="faq">
-      <div class="container">
-        <div class="section-head" style="margin-left:auto;margin-right:auto;text-align:center">
-          <div class="section-kicker">FAQ</div>
-          <h2>Questions factory owners usually ask.</h2>
-        </div>
-
-        <div class="faq">
-          <details>
-            <summary>Can solar run an entire pure water factory?</summary>
-            <p>
-              It can power substantial factory loads when the system is correctly sized, but the right design depends on your machines, their startup requirements, operating hours and budget. In some factories, a hybrid solar + battery + generator/grid setup is the most practical approach.
-            </p>
-          </details>
-
-          <details>
-            <summary>Will I still need my generator?</summary>
-            <p>
-              Possibly. The goal is not always to throw away the generator; it is to stop depending on it for every hour of production. We can integrate the generator as backup for periods of unusually high demand, poor solar conditions or other contingencies.
-            </p>
-          </details>
-
-          <details>
-            <summary>How do you know what size system my factory needs?</summary>
-            <p>
-              We start with the factory's actual electrical loads and production schedule. That is why the assessment comes before the final recommendation.
-            </p>
-          </details>
-
-          <details>
-            <summary>Can the system be expanded later?</summary>
-            <p>
-              In many cases, yes—if expansion is considered during the initial design. We can recommend an architecture that leaves room for future production growth where practical.
-            </p>
-          </details>
-
-          <details>
-            <summary>How much does it cost?</summary>
-            <p>
-              There is no responsible one-price answer without knowing your factory load. A small production setup and a large multi-line factory require very different systems. Request an assessment and we can recommend the appropriate capacity and budget range.
-            </p>
-          </details>
-
-          <details>
-            <summary>What information should I send first?</summary>
-            <p>
-              Your factory location, approximate production hours, current generator size, and—if available—a list or photos of the major machines you run. We can take it from there.
-            </p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta-section">
-      <div class="container">
-        <div class="cta-box">
-          <div class="section-kicker">Your next step</div>
-          <h2>Stop paying endlessly for power you could partly produce yourself.</h2>
-          <p>
-            Request a factory energy assessment. We’ll look at your production loads, current generator usage and operating schedule, then show you what a properly designed solar setup could look like for your factory.
-          </p>
-
-          <a class="btn btn-primary" href="https://wa.me/234XXXXXXXXXX?text=Hi%2C%20I%20want%20a%20solar%20energy%20assessment%20for%20my%20pure%20water%20factory.">
-            Request My Factory Assessment →
-          </a>
-
-          <div class="cta-note">
-            Replace <strong>234XXXXXXXXXX</strong> in this file with your WhatsApp number before publishing.
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="container footer-inner">
-      <div>© Solar for Factories powered by Todah's Solar Energy. All rights reserved.</div>
-      <div>Solar systems designed around real factory loads.</div>
-    </div>
-  </footer>
-
-  <div class="floating-cta">
-    <a class="btn btn-primary" href="https://wa.me/234XXXXXXXXXX?text=Hi%2C%20I%20want%20a%20solar%20energy%20assessment%20for%20my%20pure%20water%20factory.">
-      Request Factory Assessment →
-    </a>
-  </div>
 
 </body>
 </html>
