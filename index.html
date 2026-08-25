@@ -67,70 +67,79 @@
             margin: 0 auto;
         }
 
-        .nav {
+        /* ===== NEW HEADER STYLE (from Hotels page) ===== */
+        header {
             position: sticky;
             top: 0;
-            z-index: 50;
-            backdrop-filter: blur(16px);
-            background: rgba(9, 11, 10, .78);
-            border-bottom: 1px solid var(--line);
+            z-index: 100;
+            padding: 14px 0;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(20px) saturate(140%);
+            -webkit-backdrop-filter: blur(20px) saturate(140%);
+            border-bottom: 1px solid rgba(255, 250, 35, .08);
+            transition: background .3s ease, box-shadow .3s ease;
         }
 
-        .nav-inner {
-            height: 76px;
+        header.scrolled {
+            background: rgba(0, 0, 0, 0.96);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, .45);
+        }
+
+        .nav {
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            gap: 24px;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-weight: 850;
-            letter-spacing: -.02em;
-        }
-
-        .brand-mark {
-            width: 38px;
-            height: 38px;
-            border-radius: 12px;
-            overflow: hidden;
-            flex-shrink: 0;
-            background: #111;
-            display: grid;
-            place-items: center;
-        }
-
-        .brand-mark img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .brand small {
-            display: block;
-            font-size: .72rem;
-            color: var(--muted);
-            font-weight: 650;
-            letter-spacing: .08em;
-            text-transform: uppercase;
-            margin-top: -2px;
-        }
-
-        .nav-links {
-            display: flex;
             align-items: center;
             gap: 28px;
-            color: #d5ddd5;
-            font-size: .93rem;
+            min-height: 60px;
+            padding: 6px 12px 6px 16px;
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 20px;
+            background: rgba(9, 11, 14, .45);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, .045);
+            backdrop-filter: blur(14px) saturate(130%);
+            -webkit-backdrop-filter: blur(14px) saturate(130%);
+            transition: background .3s ease, border-color .3s ease;
         }
 
-        .nav-links a:hover {
-            color: var(--white)
+        header.scrolled .nav {
+            background: rgba(9, 11, 14, .70);
+            border-color: rgba(255, 250, 35, .12);
         }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+            display: block;
+            filter: drop-shadow(0 8px 18px rgba(0, 0, 0, .18));
+            transition: height .3s ease;
+        }
+
+        header.scrolled .logo img {
+            height: 36px;
+        }
+
+        .nav-link {
+            padding: 10px 16px;
+            border-radius: 999px;
+            color: rgba(255, 255, 255, .72);
+            font-size: 13px;
+            font-weight: 700;
+            transition: color .25s ease, background .25s ease;
+            white-space: nowrap;
+        }
+
+        .nav-link:hover {
+            color: #FFFA23;
+            background: rgba(255, 250, 35, .07);
+        }
+
+        /* ===== ORIGINAL FACTORIES STYLES (keep everything else) ===== */
 
         .btn {
             display: inline-flex;
@@ -895,17 +904,46 @@
             .bonus-grid {
                 grid-template-columns: 1fr
             }
+            .nav {
+                flex-wrap: wrap;
+                gap: 12px;
+                justify-content: center;
+            }
+            .nav .btn {
+                font-size: 12px;
+                padding: 10px 16px;
+            }
+            .nav-link {
+                font-size: 12px;
+                padding: 8px 12px;
+            }
         }
 
         @media (max-width: 680px) {
             .container {
                 width: min(calc(100% - 28px), var(--max))
             }
-            .nav-inner {
-                height: 68px
+            header {
+                padding: 10px 0;
+            }
+            .nav {
+                min-height: 54px;
+                padding: 5px 8px 5px 12px;
+                border-radius: 17px;
+                gap: 10px;
             }
             .nav .btn {
-                display: none
+                display: none;
+            }
+            .nav-link {
+                font-size: 11px;
+                padding: 6px 10px;
+            }
+            .logo img {
+                height: 32px;
+            }
+            header.scrolled .logo img {
+                height: 28px;
             }
             .hero {
                 padding: 62px 0 52px
@@ -953,36 +991,46 @@
                 padding-bottom: 100px
             }
         }
+
+        @media (max-width: 480px) {
+            .nav-links {
+                display: flex !important;
+                gap: 6px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .nav-link {
+                font-size: 10px;
+                padding: 4px 8px;
+            }
+            .nav {
+                gap: 6px;
+                padding: 4px 6px;
+            }
+        }
     </style>
 </head>
 
 <body>
 
-    <!-- Replace the brand name and WhatsApp number before launch. -->
-    <nav class="nav">
-        <div class="container nav-inner">
-            <a class="brand" href="#">
-                <span class="brand-mark">
-                    <img src="todahslogo.png" alt="Todah's Solar Energy logo" />
-                </span>
-                <span>
-                    Solar for Factories
-                    <small>Nigeria</small>
-                </span>
-            </a>
-
-            <div class="nav-links">
-                <a href="#problem">Why Solar</a>
-                <a href="#offer">What You Get</a>
-                <a href="#process">How It Works</a>
-                <a href="#faq">FAQ</a>
+    <!-- ===== NEW HEADER with glass-morphism style (Hotels navbar style) ===== -->
+    <header>
+        <div class="container nav">
+            <div class="logo">
+                <img src="todahslogo.png" alt="Todah's Solar Energy logo" />
             </div>
+
+            <!-- Keep all factories links -->
+            <a href="#problem" class="nav-link">Why Solar</a>
+            <a href="#offer" class="nav-link">What You Get</a>
+            <a href="#process" class="nav-link">How It Works</a>
+            <a href="#faq" class="nav-link">FAQ</a>
 
             <a class="btn btn-primary" href="https://wa.me/2349065209762?text=Hi%2C%20I%20want%20a%20solar%20energy%20assessment%20for%20my%20pure%20water%20factory.">
                 Request Assessment →
             </a>
         </div>
-    </nav>
+    </header>
 
     <main>
 
@@ -1376,6 +1424,34 @@
             Request Factory Assessment →
         </a>
     </div>
+
+    <!-- Sticky header scroll shadow -->
+    <script>
+        (function() {
+            const header = document.querySelector('header');
+            if (!header) return;
+
+            let ticking = false;
+
+            const onScroll = () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        const scrollY = window.scrollY || window.pageYOffset;
+                        if (scrollY > 20) {
+                            header.classList.add('scrolled');
+                        } else {
+                            header.classList.remove('scrolled');
+                        }
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            };
+
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+        })();
+    </script>
 
 </body>
 </html>
