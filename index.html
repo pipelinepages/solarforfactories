@@ -67,7 +67,7 @@
             margin: 0 auto;
         }
 
-        /* ===== NEW HEADER STYLE (from Hotels page) ===== */
+        /* Header */
         header {
             position: sticky;
             top: 0;
@@ -86,6 +86,7 @@
         }
 
         .nav {
+            position: relative;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -124,6 +125,47 @@
             height: 36px;
         }
 
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px 4px;
+            z-index: 110;
+            flex-shrink: 0;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #f4f7f2;
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            transform-origin: center;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Nav Menu */
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
         .nav-link {
             padding: 10px 16px;
             border-radius: 999px;
@@ -139,8 +181,7 @@
             background: rgba(255, 250, 35, .07);
         }
 
-        /* ===== ORIGINAL FACTORIES STYLES (keep everything else) ===== */
-
+        /* Buttons */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -176,6 +217,7 @@
             transform: translateY(-2px);
         }
 
+        /* Hero */
         .hero {
             padding: 88px 0 70px;
             position: relative;
@@ -271,13 +313,14 @@
             flex: 0 0 auto;
         }
 
+        /* Hero infographic */
         .hero-card {
             border: 1px solid var(--line);
             background:
-                linear-gradient(180deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .025)),
+                linear-gradient(180deg, rgba(255, 255, 255, .045), rgba(255, 255, 255, .02)),
                 var(--panel);
             border-radius: 32px;
-            padding: 28px;
+            padding: 28px 24px 24px;
             box-shadow: var(--shadow);
             position: relative;
             overflow: hidden;
@@ -290,139 +333,215 @@
             width: 260px;
             height: 260px;
             border-radius: 50%;
-            background: rgba(247, 198, 0, .1);
+            background: rgba(247, 198, 0, .07);
             filter: blur(10px);
         }
 
-        .system-visual {
-            min-height: 460px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+        .infographic {
             position: relative;
             z-index: 1;
-        }
-
-        .visual-top {
             display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            align-items: flex-start;
-        }
-
-        .visual-label {
-            font-size: .78rem;
-            color: var(--muted);
-            text-transform: uppercase;
-            letter-spacing: .1em;
-            font-weight: 800;
-        }
-
-        .visual-title {
-            font-size: 1.65rem;
-            font-weight: 850;
-            letter-spacing: -.04em;
-            margin-top: 7px;
-        }
-
-        .status {
-            padding: 8px 11px;
-            border-radius: 999px;
-            background: rgba(130, 209, 115, .11);
-            color: #9fe593;
-            border: 1px solid rgba(130, 209, 115, .16);
-            font-size: .78rem;
-            font-weight: 800;
-            white-space: nowrap;
-        }
-
-        .factory {
-            margin: 22px 0 20px;
-            padding: 24px;
-            border-radius: 22px;
-            background: #0d100e;
-            border: 1px solid rgba(255, 255, 255, .07);
-        }
-
-        .solar-roof {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 7px;
-            transform: skewX(-9deg);
-            margin: 10px 10px 22px;
-        }
-
-        .panel-cell {
-            height: 44px;
-            border-radius: 6px;
-            background: linear-gradient(145deg, #253842, #0f1c25);
-            border: 1px solid rgba(130, 209, 255, .14);
-            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .025);
-        }
-
-        .factory-body {
-            display: grid;
-            grid-template-columns: 1.3fr .7fr;
+            flex-direction: column;
             gap: 10px;
         }
 
-        .factory-block,
-        .factory-side {
-            min-height: 92px;
-            border-radius: 12px;
-            background: linear-gradient(180deg, #242a24, #171c17);
-            border: 1px solid rgba(255, 255, 255, .06);
+        .infographic-roof {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            padding: 10px 12px 6px;
+            background: rgba(255, 255, 255, .035);
+            border-radius: 16px 16px 0 0;
+            border-bottom: 2px solid rgba(247, 198, 0, .2);
             position: relative;
-            overflow: hidden;
         }
 
-        .factory-block::before {
-            content: "PURE WATER";
-            position: absolute;
-            left: 16px;
-            top: 14px;
-            color: #f5f7f5;
-            font-weight: 900;
-            letter-spacing: .07em;
-            font-size: .72rem;
+        .infographic-roof .panel {
+            width: 28px;
+            height: 18px;
+            background: linear-gradient(145deg, #1e3a4a, #0f2838);
+            border: 1px solid rgba(130, 209, 255, .2);
+            border-radius: 3px;
+            box-shadow: inset 0 0 6px rgba(130, 209, 255, .06);
+            position: relative;
         }
 
-        .factory-block::after {
+        .infographic-roof .panel::after {
             content: "";
             position: absolute;
-            left: 16px;
-            right: 16px;
-            bottom: 18px;
-            height: 22px;
-            background: repeating-linear-gradient(90deg, #5b655b 0 8px, transparent 8px 14px);
-            opacity: .8;
+            inset: 2px 4px;
+            border-top: 1px solid rgba(255, 255, 255, .06);
+            border-bottom: 1px solid rgba(255, 255, 255, .06);
+            border-radius: 1px;
         }
 
-        .flow {
+        .roof-label {
+            position: absolute;
+            top: -4px;
+            right: 12px;
+            font-size: .6rem;
+            font-weight: 800;
+            color: var(--yellow);
+            background: rgba(0, 0, 0, .5);
+            padding: 0 8px;
+            border-radius: 4px;
+            letter-spacing: .05em;
+        }
+
+        .flow-arrows {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            padding: 2px 0;
+            color: var(--yellow);
+            font-size: 1.2rem;
+            line-height: 1;
+            letter-spacing: 6px;
+            opacity: .7;
+        }
+
+        .equipment-row {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-top: 14px;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
         }
 
-        .flow-card {
-            padding: 14px;
-            border-radius: 14px;
+        .equip-item {
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 10px 6px;
+            text-align: center;
+            transition: background .2s;
+        }
+
+        .equip-item .icon {
+            font-size: 1.5rem;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .equip-item .label {
+            font-size: .6rem;
+            font-weight: 700;
+            color: #d0d8d0;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+        }
+
+        .equip-item .sub {
+            font-size: .5rem;
+            color: var(--muted);
+            display: block;
+            margin-top: 2px;
+        }
+
+        .equip-item.highlight {
+            background: rgba(247, 198, 0, .07);
+            border-color: rgba(247, 198, 0, .2);
+        }
+
+        .backup-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 2px;
+        }
+
+        .backup-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 10px;
             background: rgba(255, 255, 255, .03);
             border: 1px solid var(--line);
         }
 
-        .flow-card b {
-            display: block;
-            font-size: .92rem;
-            margin-bottom: 4px;
+        .backup-item .icon {
+            font-size: 1.2rem;
+            flex: 0 0 auto;
         }
 
-        .flow-card span {
+        .backup-item .info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .backup-item .info .name {
+            font-size: .7rem;
+            font-weight: 800;
+            color: #e8eee8;
+        }
+
+        .backup-item .info .desc {
+            font-size: .55rem;
             color: var(--muted);
-            font-size: .76rem;
         }
 
+        .backup-item .badge {
+            margin-left: auto;
+            font-size: .5rem;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: rgba(130, 209, 115, .12);
+            color: #a6e59b;
+            border: 1px solid rgba(130, 209, 115, .1);
+            white-space: nowrap;
+        }
+
+        .factory-load {
+            margin-top: 2px;
+            padding: 10px 14px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, .035);
+            border: 1px solid rgba(247, 198, 0, .12);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .factory-load .load-label {
+            font-size: .65rem;
+            font-weight: 700;
+            color: #d8e0d8;
+            letter-spacing: .04em;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .factory-load .load-label .badge {
+            font-weight: 400;
+            color: var(--muted);
+            font-size: .55rem;
+        }
+
+        .factory-load .load-items {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .factory-load .load-items span {
+            font-size: .6rem;
+            background: rgba(255, 255, 255, .06);
+            padding: 2px 10px;
+            border-radius: 999px;
+            color: #c8d0c8;
+            border: 1px solid rgba(255, 255, 255, .05);
+        }
+
+        .factory-load .load-items .highlight-item {
+            background: rgba(247, 198, 0, .08);
+            border-color: rgba(247, 198, 0, .15);
+            color: #f5e68a;
+        }
+
+        /* Strip */
         .strip {
             border-top: 1px solid var(--line);
             border-bottom: 1px solid var(--line);
@@ -450,6 +569,7 @@
             font-size: .93rem;
         }
 
+        /* Sections */
         section {
             padding: 92px 0
         }
@@ -849,12 +969,6 @@
             margin-bottom: 28px;
         }
 
-        .cta-note {
-            margin-top: 18px;
-            color: #939c93;
-            font-size: .85rem;
-        }
-
         footer {
             border-top: 1px solid var(--line);
             padding: 28px 0 42px;
@@ -869,12 +983,63 @@
             flex-wrap: wrap;
         }
 
-        /* floating-cta removed — no sticky CTA */
-
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 980px) {
-            .nav-links {
-                display: none
+            .hamburger {
+                display: flex;
             }
+
+            .nav-menu {
+                position: absolute;
+                top: calc(100% + 12px);
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.97);
+                backdrop-filter: blur(24px) saturate(160%);
+                -webkit-backdrop-filter: blur(24px) saturate(160%);
+                flex-direction: column;
+                padding: 20px 16px;
+                gap: 10px;
+                border-radius: 20px;
+                border: 1px solid rgba(255, 255, 255, .08);
+                box-shadow: 0 24px 64px rgba(0, 0, 0, .7);
+                display: none;
+                z-index: 200;
+                align-items: stretch;
+                transform-origin: top center;
+                transition: opacity 0.25s ease, transform 0.25s ease;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu .nav-link {
+                padding: 14px 16px;
+                border-radius: 14px;
+                text-align: center;
+                font-size: 1rem;
+                font-weight: 700;
+                white-space: normal;
+                color: rgba(255, 255, 255, .8);
+                background: rgba(255, 255, 255, .03);
+                border: 1px solid transparent;
+            }
+
+            .nav-menu .nav-link:hover {
+                background: rgba(255, 250, 35, .06);
+                border-color: rgba(255, 250, 35, .08);
+                color: #FFFA23;
+            }
+
+            .nav-menu .btn {
+                justify-content: center;
+                margin-top: 4px;
+                padding: 16px;
+                font-size: 1rem;
+                width: 100%;
+            }
+
             .hero-grid,
             .offer-wrap,
             .promise {
@@ -892,19 +1057,10 @@
             .bonus-grid {
                 grid-template-columns: 1fr
             }
-            .nav {
-                flex-wrap: wrap;
-                gap: 12px;
-                justify-content: center;
-            }
             .nav .btn {
-                font-size: 12px;
-                padding: 10px 16px;
+                display: none;
             }
-            .nav-link {
-                font-size: 12px;
-                padding: 8px 12px;
-            }
+            /* Hide the inline button, show it in the dropdown */
         }
 
         @media (max-width: 680px) {
@@ -919,13 +1075,6 @@
                 padding: 5px 8px 5px 12px;
                 border-radius: 17px;
                 gap: 10px;
-            }
-            .nav .btn {
-                display: none;
-            }
-            .nav-link {
-                font-size: 11px;
-                padding: 6px 10px;
             }
             .logo img {
                 height: 32px;
@@ -948,11 +1097,74 @@
             .hero-actions .btn {
                 width: 100%
             }
-            .system-visual {
-                min-height: 390px
+            .hero-card {
+                padding: 18px 14px 16px;
             }
-            .flow {
-                grid-template-columns: 1fr
+            .infographic-roof .panel {
+                width: 20px;
+                height: 14px;
+            }
+            .equipment-row {
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 4px;
+            }
+            .equip-item {
+                padding: 6px 4px;
+            }
+            .equip-item .icon {
+                font-size: 1.1rem;
+            }
+            .equip-item .label {
+                font-size: .5rem;
+            }
+            .equip-item .sub {
+                font-size: .4rem;
+            }
+            .backup-row {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+            .backup-item {
+                padding: 6px 10px;
+            }
+            .backup-item .icon {
+                font-size: 1rem;
+            }
+            .backup-item .info .name {
+                font-size: .6rem;
+            }
+            .backup-item .info .desc {
+                font-size: .5rem;
+            }
+            .backup-item .badge {
+                font-size: .45rem;
+                padding: 1px 6px;
+            }
+            .factory-load {
+                padding: 8px 10px;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 4px;
+            }
+            .factory-load .load-label {
+                font-size: .6rem;
+            }
+            .factory-load .load-items {
+                gap: 4px;
+            }
+            .factory-load .load-items span {
+                font-size: .5rem;
+                padding: 2px 6px;
+            }
+            .flow-arrows {
+                font-size: .9rem;
+                letter-spacing: 3px;
+            }
+            .roof-label {
+                font-size: .5rem;
+                top: -2px;
+                right: 6px;
+                padding: 0 5px;
             }
             .problem-grid,
             .contrast,
@@ -972,26 +1184,36 @@
             .cta-box {
                 padding: 34px 24px
             }
-            /* floating-cta removed — no sticky CTA, so no extra footer padding needed */
             footer {
                 padding-bottom: 42px;
+            }
+            .nav-menu .nav-link {
+                font-size: .95rem;
+                padding: 12px 14px;
             }
         }
 
         @media (max-width: 480px) {
-            .nav-links {
-                display: flex !important;
-                gap: 6px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .nav-link {
-                font-size: 10px;
-                padding: 4px 8px;
+            .nav-menu .nav-link {
+                font-size: .85rem;
+                padding: 10px 12px;
             }
             .nav {
                 gap: 6px;
                 padding: 4px 6px;
+            }
+            .hamburger span {
+                width: 20px;
+                height: 2px;
+            }
+            .equipment-row {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+            .equip-item .icon {
+                font-size: .9rem;
+            }
+            .equip-item .label {
+                font-size: .45rem;
             }
         }
     </style>
@@ -999,42 +1221,48 @@
 
 <body>
 
-    <!-- ===== NEW HEADER with glass-morphism style (Hotels navbar style) ===== -->
+    <!-- Header -->
     <header>
         <div class="container nav">
             <div class="logo">
                 <img src="todahslogo.png" alt="Todah's Solar Energy logo" />
             </div>
 
-            <!-- Keep all factories links -->
-            <a href="#problem" class="nav-link">Why Solar</a>
-            <a href="#offer" class="nav-link">What You Get</a>
-            <a href="#process" class="nav-link">How It Works</a>
-            <a href="#faq" class="nav-link">FAQ</a>
+            <!-- Hamburger Button -->
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
-            <a class="btn btn-primary" href="https://wa.me/2349065209762?text=Hi%2C%20I%20want%20a%20solar%20energy%20assessment%20for%20my%20pure%20water%20factory.">
-                Request Assessment →
-            </a>
+            <!-- Navigation Menu (hidden on mobile, toggled by hamburger) -->
+            <div class="nav-menu" id="navMenu">
+                <a href="#problem" class="nav-link">Why Solar</a>
+                <a href="#offer" class="nav-link">What You Get</a>
+                <a href="#process" class="nav-link">How It Works</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+                <a class="btn btn-primary" href="https://wa.me/2349065209762?text=Hi%2C%20I%20want%20a%20solar%20energy%20assessment%20for%20my%20pure%20water%20factory.">
+                    Request Assessment →
+                </a>
+            </div>
         </div>
     </header>
 
     <main>
 
+        <!-- Hero -->
         <section class="hero">
             <div class="container hero-grid">
 
                 <div>
                     <div class="eyebrow"><span class="dot"></span> Solar systems for pure water factories</div>
-
                     <h1>
                         Your generator isn't just burning diesel.
                         <span class="accent">It's burning profit.</span>
                     </h1>
-
                     <p class="hero-copy">
                         We design and install complete solar power systems for pure water and sachet water factories in Nigeria—so your pumps, treatment equipment, sealing machines and essential factory loads can run with far less dependence on generators.
                     </p>
-
                     <div class="hero-actions">
                         <a class="btn btn-primary" href="https://wa.me/2349065209762?text=Hi%2C%20I%20want%20a%20solar%20energy%20assessment%20for%20my%20pure%20water%20factory.">
                             Request Your Factory Assessment →
@@ -1043,7 +1271,6 @@
                             See What's Included
                         </a>
                     </div>
-
                     <div class="micro-proof">
                         <span><span class="check">✓</span> Custom factory load audit</span>
                         <span><span class="check">✓</span> Generator + grid integration</span>
@@ -1051,48 +1278,85 @@
                     </div>
                 </div>
 
+                <!-- Hero Infographic -->
                 <div class="hero-card">
-                    <div class="system-visual">
-                        <div class="visual-top">
-                            <div>
-                                <div class="visual-label">Built for production</div>
-                                <div class="visual-title">Solar + Battery + Backup</div>
-                            </div>
-                            <div class="status">Factory-ready</div>
+                    <div class="infographic">
+
+                        <!-- ROOF with solar panels -->
+                        <div class="infographic-roof">
+                            <span class="roof-label">☀ SOLAR</span>
+                            <span class="panel"></span><span class="panel"></span><span class="panel"></span>
+                            <span class="panel"></span><span class="panel"></span><span class="panel"></span>
+                            <span class="panel"></span><span class="panel"></span><span class="panel"></span>
+                            <span class="panel"></span><span class="panel"></span><span class="panel"></span>
                         </div>
 
-                        <div class="factory">
-                            <div class="solar-roof">
-                                <div class="panel-cell"></div><div class="panel-cell"></div><div class="panel-cell"></div><div class="panel-cell"></div><div class="panel-cell"></div>
-                                <div class="panel-cell"></div><div class="panel-cell"></div><div class="panel-cell"></div><div class="panel-cell"></div><div class="panel-cell"></div>
-                            </div>
+                        <!-- Downward flow arrows -->
+                        <div class="flow-arrows">⬇ ⬇ ⬇</div>
 
-                            <div class="factory-body">
-                                <div class="factory-block"></div>
-                                <div class="factory-side"></div>
+                        <!-- Equipment: Inverter · Battery · Generator -->
+                        <div class="equipment-row">
+                            <div class="equip-item highlight">
+                                <span class="icon">⚡</span>
+                                <span class="label">Inverter</span>
+                                <span class="sub">DC → AC</span>
+                            </div>
+                            <div class="equip-item">
+                                <span class="icon">▣</span>
+                                <span class="label">Battery</span>
+                                <span class="sub">Storage</span>
+                            </div>
+                            <div class="equip-item">
+                                <span class="icon">⚙</span>
+                                <span class="label">Backup</span>
+                                <span class="sub">Grid / Gen</span>
                             </div>
                         </div>
 
-                        <div class="flow">
-                            <div class="flow-card">
-                                <b>☀ Solar</b>
-                                <span>Produces daytime power</span>
-                            </div>
-                            <div class="flow-card">
-                                <b>▣ Battery</b>
-                                <span>Stores power for continuity</span>
-                            </div>
-                            <div class="flow-card">
-                                <b>⚡ Backup</b>
-                                <span>Grid/generator stays integrated</span>
+                        <!-- Flow arrows -->
+                        <div class="flow-arrows">⬇ ⬇ ⬇</div>
+
+                        <!-- Factory load bar -->
+                        <div class="factory-load">
+                            <span class="load-label">
+                                🏭 FACTORY LOADS
+                                <span class="badge">(powered by solar + backup)</span>
+                            </span>
+                            <div class="load-items">
+                                <span>💧 Treatment</span>
+                                <span class="highlight-item">🌀 Pumps</span>
+                                <span>🔒 Sealing</span>
+                                <span>📦 Packaging</span>
                             </div>
                         </div>
+
+                        <!-- Backup integration row -->
+                        <div class="backup-row">
+                            <div class="backup-item">
+                                <span class="icon">🔋</span>
+                                <div class="info">
+                                    <span class="name">Battery Bank</span>
+                                    <span class="desc">Stores solar for night / cloudy</span>
+                                </div>
+                                <span class="badge">included</span>
+                            </div>
+                            <div class="backup-item">
+                                <span class="icon">🛢️</span>
+                                <div class="info">
+                                    <span class="name">Generator</span>
+                                    <span class="desc">Intelligent backup when needed</span>
+                                </div>
+                                <span class="badge">integrated</span>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
             </div>
         </section>
 
+        <!-- Strip -->
         <div class="strip">
             <div class="container strip-inner">
                 <div class="strip-item">Designed around <strong>your actual machines</strong></div>
@@ -1102,6 +1366,7 @@
             </div>
         </div>
 
+        <!-- Problem -->
         <section id="problem">
             <div class="container">
                 <div class="section-head">
@@ -1156,6 +1421,7 @@
             </div>
         </section>
 
+        <!-- Offer -->
         <section class="offer" id="offer">
             <div class="container offer-wrap">
 
@@ -1165,7 +1431,6 @@
                     <p>
                         We first understand what your factory actually runs, when it runs, and which loads are critical. Then we design the system around the business—not the other way around.
                     </p>
-
                     <a class="btn btn-primary" style="margin-top:14px" href="https://wa.me/2349065209762?text=Hi%2C%20I%20want%20a%20solar%20energy%20assessment%20for%20my%20pure%20water%20factory.">
                         Get My Factory Assessed →
                     </a>
@@ -1257,6 +1522,7 @@
             </div>
         </section>
 
+        <!-- Process -->
         <section id="process">
             <div class="container">
                 <div class="section-head">
@@ -1292,6 +1558,7 @@
             </div>
         </section>
 
+        <!-- Fit -->
         <section style="padding-top:20px">
             <div class="container">
                 <div class="section-head">
@@ -1323,6 +1590,7 @@
             </div>
         </section>
 
+        <!-- FAQ -->
         <section id="faq">
             <div class="container">
                 <div class="section-head" style="margin-left:auto;margin-right:auto;text-align:center">
@@ -1376,6 +1644,7 @@
             </div>
         </section>
 
+        <!-- CTA -->
         <section class="cta-section">
             <div class="container">
                 <div class="cta-box">
@@ -1384,11 +1653,9 @@
                     <p>
                         Request a factory energy assessment. We'll look at your production loads, current generator usage and operating schedule, then show you what a properly designed solar setup could look like for your factory.
                     </p>
-
                     <a class="btn btn-primary" href="https://wa.me/2349065209762?text=Hi%2C%20I%20want%20a%20solar%20energy%20assessment%20for%20my%20pure%20water%20factory.">
                         Request My Factory Assessment →
                     </a>
-
                 </div>
             </div>
         </section>
@@ -1402,29 +1669,51 @@
         </div>
     </footer>
 
-    <!-- Sticky header scroll shadow -->
+    <!-- Hamburger toggle + header scroll -->
     <script>
         (function() {
+            // Hamburger toggle
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('navMenu');
+
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    hamburger.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                });
+
+                // Close menu when clicking a link inside
+                navMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    });
+                });
+
+                // Close menu when clicking outside (optional)
+                document.addEventListener('click', function(e) {
+                    if (!e.target.closest('.nav')) {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    }
+                });
+            }
+
+            // Sticky header scroll shadow
             const header = document.querySelector('header');
             if (!header) return;
-
             let ticking = false;
-
             const onScroll = () => {
                 if (!ticking) {
                     window.requestAnimationFrame(() => {
                         const scrollY = window.scrollY || window.pageYOffset;
-                        if (scrollY > 20) {
-                            header.classList.add('scrolled');
-                        } else {
-                            header.classList.remove('scrolled');
-                        }
+                        header.classList.toggle('scrolled', scrollY > 20);
                         ticking = false;
                     });
                     ticking = true;
                 }
             };
-
             window.addEventListener('scroll', onScroll, { passive: true });
             onScroll();
         })();
