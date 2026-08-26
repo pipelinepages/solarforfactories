@@ -313,7 +313,7 @@
             flex: 0 0 auto;
         }
 
-        /* Hero infographic */
+        /* Hero infographic – NEW */
         .hero-card {
             border: 1px solid var(--line);
             background:
@@ -337,208 +337,230 @@
             filter: blur(10px);
         }
 
-        .infographic {
+        /* New infographic classes */
+        .system-visual {
+            min-height: 460px;
+            display: flex;
+            flex-direction: column;
             position: relative;
             z-index: 1;
+        }
+
+        .visual-top {
             display: flex;
-            flex-direction: column;
-            gap: 10px;
+            justify-content: space-between;
+            gap: 20px;
+            align-items: flex-start;
+            margin-bottom: 22px;
         }
 
-        .infographic-roof {
-            display: flex;
-            justify-content: center;
-            gap: 6px;
-            padding: 10px 12px 6px;
-            background: rgba(255, 255, 255, .035);
-            border-radius: 16px 16px 0 0;
-            border-bottom: 2px solid rgba(247, 198, 0, .2);
-            position: relative;
-        }
-
-        .infographic-roof .panel {
-            width: 28px;
-            height: 18px;
-            background: linear-gradient(145deg, #1e3a4a, #0f2838);
-            border: 1px solid rgba(130, 209, 255, .2);
-            border-radius: 3px;
-            box-shadow: inset 0 0 6px rgba(130, 209, 255, .06);
-            position: relative;
-        }
-
-        .infographic-roof .panel::after {
-            content: "";
-            position: absolute;
-            inset: 2px 4px;
-            border-top: 1px solid rgba(255, 255, 255, .06);
-            border-bottom: 1px solid rgba(255, 255, 255, .06);
-            border-radius: 1px;
-        }
-
-        .roof-label {
-            position: absolute;
-            top: -4px;
-            right: 12px;
-            font-size: .6rem;
-            font-weight: 800;
-            color: var(--yellow);
-            background: rgba(0, 0, 0, .5);
-            padding: 0 8px;
-            border-radius: 4px;
-            letter-spacing: .05em;
-        }
-
-        .flow-arrows {
-            display: flex;
-            justify-content: center;
-            gap: 6px;
-            padding: 2px 0;
-            color: var(--yellow);
-            font-size: 1.2rem;
-            line-height: 1;
-            letter-spacing: 6px;
-            opacity: .7;
-        }
-
-        .equipment-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 8px;
-        }
-
-        .equip-item {
-            background: rgba(255, 255, 255, .04);
-            border: 1px solid var(--line);
-            border-radius: 12px;
-            padding: 10px 6px;
-            text-align: center;
-            transition: background .2s;
-        }
-
-        .equip-item .icon {
-            font-size: 1.5rem;
-            display: block;
-            margin-bottom: 2px;
-        }
-
-        .equip-item .label {
-            font-size: .6rem;
-            font-weight: 700;
-            color: #d0d8d0;
-            letter-spacing: .04em;
+        .visual-label {
+            font-size: .78rem;
+            color: var(--muted);
             text-transform: uppercase;
-        }
-
-        .equip-item .sub {
-            font-size: .5rem;
-            color: var(--muted);
-            display: block;
-            margin-top: 2px;
-        }
-
-        .equip-item.highlight {
-            background: rgba(247, 198, 0, .07);
-            border-color: rgba(247, 198, 0, .2);
-        }
-
-        .backup-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            margin-top: 2px;
-        }
-
-        .backup-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 12px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, .03);
-            border: 1px solid var(--line);
-        }
-
-        .backup-item .icon {
-            font-size: 1.2rem;
-            flex: 0 0 auto;
-        }
-
-        .backup-item .info {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .backup-item .info .name {
-            font-size: .7rem;
+            letter-spacing: .1em;
             font-weight: 800;
-            color: #e8eee8;
         }
 
-        .backup-item .info .desc {
-            font-size: .55rem;
-            color: var(--muted);
+        .visual-title {
+            font-size: 1.65rem;
+            font-weight: 850;
+            letter-spacing: -.04em;
+            margin-top: 7px;
+            line-height: 1.08;
         }
 
-        .backup-item .badge {
-            margin-left: auto;
-            font-size: .5rem;
-            font-weight: 800;
-            padding: 2px 8px;
+        .status {
+            padding: 8px 11px;
             border-radius: 999px;
-            background: rgba(130, 209, 115, .12);
-            color: #a6e59b;
-            border: 1px solid rgba(130, 209, 115, .1);
+            background: rgba(130, 209, 115, .11);
+            color: #9fe593;
+            border: 1px solid rgba(130, 209, 115, .16);
+            font-size: .78rem;
+            font-weight: 800;
             white-space: nowrap;
         }
 
-        .factory-load {
-            margin-top: 2px;
-            padding: 10px 14px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, .035);
-            border: 1px solid rgba(247, 198, 0, .12);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 6px;
+        .power-map {
+            display: grid;
+            grid-template-columns: 1fr auto 1.25fr;
+            gap: 12px;
+            align-items: stretch;
+            flex: 1;
         }
 
-        .factory-load .load-label {
-            font-size: .65rem;
-            font-weight: 700;
-            color: #d8e0d8;
-            letter-spacing: .04em;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .factory-load .load-label .badge {
-            font-weight: 400;
-            color: var(--muted);
-            font-size: .55rem;
-        }
-
-        .factory-load .load-items {
-            display: flex;
+        .power-sources {
+            display: grid;
             gap: 10px;
+        }
+
+        .source-card {
+            padding: 16px;
+            border-radius: 16px;
+            background: #0d100e;
+            border: 1px solid rgba(255, 255, 255, .07);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-height: 92px;
+        }
+
+        .source-icon {
+            width: 42px;
+            height: 42px;
+            flex: 0 0 auto;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            font-size: 1.05rem;
+            font-weight: 900;
+        }
+
+        .source-card.solar .source-icon {
+            background: rgba(247, 198, 0, .13);
+            color: var(--yellow);
+        }
+
+        .source-card.grid .source-icon {
+            background: rgba(255, 255, 255, .07);
+            color: #dbe3db;
+        }
+
+        .source-card.generator {
+            opacity: .74;
+            border-style: dashed;
+        }
+
+        .source-card.generator .source-icon {
+            background: rgba(255, 255, 255, .05);
+            color: #aeb7ae;
+        }
+
+        .source-copy b {
+            display: block;
+            font-size: .92rem;
+            margin-bottom: 2px;
+        }
+
+        .source-copy span {
+            display: block;
+            color: var(--muted);
+            font-size: .74rem;
+            line-height: 1.35;
+        }
+
+        .power-arrows {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            color: var(--yellow);
+            font-weight: 900;
+            font-size: 1.45rem;
+            padding: 7px 0;
+        }
+
+        .power-arrows span:nth-child(2) {
+            color: #cfd6cf;
+        }
+        .power-arrows span:nth-child(3) {
+            color: #8d968d;
+        }
+
+        .factory-hub {
+            border-radius: 22px;
+            border: 1px solid rgba(247, 198, 0, .2);
+            background:
+                radial-gradient(circle at 50% 0%, rgba(247, 198, 0, .12), transparent 42%),
+                #0d100e;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            min-height: 296px;
+        }
+
+        .factory-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 14px;
+            border-radius: 18px;
+            display: grid;
+            place-items: center;
+            background: var(--yellow);
+            color: #111;
+            font-size: 1.7rem;
+            font-weight: 900;
+            box-shadow: 0 0 0 8px rgba(247, 198, 0, .07);
+        }
+
+        .factory-hub small {
+            color: var(--yellow);
+            font-size: .72rem;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            font-weight: 900;
+        }
+
+        .factory-hub h3 {
+            font-size: 1.25rem;
+            line-height: 1.05;
+            letter-spacing: -.035em;
+            margin: 7px 0 14px;
+        }
+
+        .machine-list {
+            display: flex;
             flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
         }
 
-        .factory-load .load-items span {
-            font-size: .6rem;
-            background: rgba(255, 255, 255, .06);
-            padding: 2px 10px;
+        .machine-list span {
+            padding: 6px 8px;
             border-radius: 999px;
-            color: #c8d0c8;
-            border: 1px solid rgba(255, 255, 255, .05);
+            background: rgba(255, 255, 255, .05);
+            border: 1px solid rgba(255, 255, 255, .07);
+            color: #b9c1b9;
+            font-size: .68rem;
+            font-weight: 700;
         }
 
-        .factory-load .load-items .highlight-item {
-            background: rgba(247, 198, 0, .08);
-            border-color: rgba(247, 198, 0, .15);
-            color: #f5e68a;
+        .visual-result {
+            margin-top: 14px;
+            border-radius: 16px;
+            padding: 14px 16px;
+            background: rgba(130, 209, 115, .08);
+            border: 1px solid rgba(130, 209, 115, .16);
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .result-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 11px;
+            display: grid;
+            place-items: center;
+            flex: 0 0 auto;
+            background: rgba(130, 209, 115, .12);
+            color: #a8e79d;
+            font-weight: 900;
+        }
+
+        .visual-result b {
+            display: block;
+            font-size: .9rem;
+            margin-bottom: 1px;
+        }
+
+        .visual-result span {
+            display: block;
+            color: #aeb9ae;
+            font-size: .76rem;
+            line-height: 1.35;
         }
 
         /* Strip */
@@ -1100,72 +1122,28 @@
             .hero-card {
                 padding: 18px 14px 16px;
             }
-            .infographic-roof .panel {
-                width: 20px;
-                height: 14px;
+
+            /* New infographic mobile tweaks */
+            .system-visual {
+                min-height: 0;
             }
-            .equipment-row {
-                grid-template-columns: 1fr 1fr 1fr;
-                gap: 4px;
-            }
-            .equip-item {
-                padding: 6px 4px;
-            }
-            .equip-item .icon {
-                font-size: 1.1rem;
-            }
-            .equip-item .label {
-                font-size: .5rem;
-            }
-            .equip-item .sub {
-                font-size: .4rem;
-            }
-            .backup-row {
+            .power-map {
                 grid-template-columns: 1fr;
-                gap: 4px;
             }
-            .backup-item {
-                padding: 6px 10px;
+            .power-arrows {
+                flex-direction: row;
+                padding: 0;
             }
-            .backup-item .icon {
-                font-size: 1rem;
+            .power-arrows span {
+                transform: rotate(90deg);
             }
-            .backup-item .info .name {
-                font-size: .6rem;
+            .factory-hub {
+                min-height: 230px;
             }
-            .backup-item .info .desc {
-                font-size: .5rem;
+            .visual-title {
+                font-size: 1.2rem;
             }
-            .backup-item .badge {
-                font-size: .45rem;
-                padding: 1px 6px;
-            }
-            .factory-load {
-                padding: 8px 10px;
-                flex-direction: column;
-                align-items: stretch;
-                gap: 4px;
-            }
-            .factory-load .load-label {
-                font-size: .6rem;
-            }
-            .factory-load .load-items {
-                gap: 4px;
-            }
-            .factory-load .load-items span {
-                font-size: .5rem;
-                padding: 2px 6px;
-            }
-            .flow-arrows {
-                font-size: .9rem;
-                letter-spacing: 3px;
-            }
-            .roof-label {
-                font-size: .5rem;
-                top: -2px;
-                right: 6px;
-                padding: 0 5px;
-            }
+
             .problem-grid,
             .contrast,
             .process-grid,
@@ -1205,15 +1183,6 @@
             .hamburger span {
                 width: 20px;
                 height: 2px;
-            }
-            .equipment-row {
-                grid-template-columns: 1fr 1fr 1fr;
-            }
-            .equip-item .icon {
-                font-size: .9rem;
-            }
-            .equip-item .label {
-                font-size: .45rem;
             }
         }
     </style>
@@ -1278,78 +1247,71 @@
                     </div>
                 </div>
 
-                <!-- Hero Infographic -->
+                <!-- Hero Infographic – REPLACED with new power-flow design -->
                 <div class="hero-card">
-                    <div class="infographic">
-
-                        <!-- ROOF with solar panels -->
-                        <div class="infographic-roof">
-                            <span class="roof-label">☀ SOLAR</span>
-                            <span class="panel"></span><span class="panel"></span><span class="panel"></span>
-                            <span class="panel"></span><span class="panel"></span><span class="panel"></span>
-                            <span class="panel"></span><span class="panel"></span><span class="panel"></span>
-                            <span class="panel"></span><span class="panel"></span><span class="panel"></span>
+                    <div class="system-visual">
+                        <div class="visual-top">
+                            <div>
+                                <div class="visual-label">The goal</div>
+                                <div class="visual-title">Make your generator the backup—not the main power source.</div>
+                            </div>
+                            <div class="status">Factory power flow</div>
                         </div>
 
-                        <!-- Downward flow arrows -->
-                        <div class="flow-arrows">⬇ ⬇ ⬇</div>
-
-                        <!-- Equipment: Inverter · Battery · Generator -->
-                        <div class="equipment-row">
-                            <div class="equip-item highlight">
-                                <span class="icon">⚡</span>
-                                <span class="label">Inverter</span>
-                                <span class="sub">DC → AC</span>
-                            </div>
-                            <div class="equip-item">
-                                <span class="icon">▣</span>
-                                <span class="label">Battery</span>
-                                <span class="sub">Storage</span>
-                            </div>
-                            <div class="equip-item">
-                                <span class="icon">⚙</span>
-                                <span class="label">Backup</span>
-                                <span class="sub">Grid / Gen</span>
-                            </div>
-                        </div>
-
-                        <!-- Flow arrows -->
-                        <div class="flow-arrows">⬇ ⬇ ⬇</div>
-
-                        <!-- Factory load bar -->
-                        <div class="factory-load">
-                            <span class="load-label">
-                                🏭 FACTORY LOADS
-                                <span class="badge">(powered by solar + backup)</span>
-                            </span>
-                            <div class="load-items">
-                                <span>💧 Treatment</span>
-                                <span class="highlight-item">🌀 Pumps</span>
-                                <span>🔒 Sealing</span>
-                                <span>📦 Packaging</span>
-                            </div>
-                        </div>
-
-                        <!-- Backup integration row -->
-                        <div class="backup-row">
-                            <div class="backup-item">
-                                <span class="icon">🔋</span>
-                                <div class="info">
-                                    <span class="name">Battery Bank</span>
-                                    <span class="desc">Stores solar for night / cloudy</span>
+                        <div class="power-map">
+                            <div class="power-sources">
+                                <div class="source-card solar">
+                                    <div class="source-icon">☀</div>
+                                    <div class="source-copy">
+                                        <b>Solar power</b>
+                                        <span>Handles as much of your daytime production load as the system is designed for.</span>
+                                    </div>
                                 </div>
-                                <span class="badge">included</span>
-                            </div>
-                            <div class="backup-item">
-                                <span class="icon">🛢️</span>
-                                <div class="info">
-                                    <span class="name">Generator</span>
-                                    <span class="desc">Intelligent backup when needed</span>
+
+                                <div class="source-card grid">
+                                    <div class="source-icon">⚡</div>
+                                    <div class="source-copy">
+                                        <b>Grid power</b>
+                                        <span>Supports production whenever available.</span>
+                                    </div>
                                 </div>
-                                <span class="badge">integrated</span>
+
+                                <div class="source-card generator">
+                                    <div class="source-icon">G</div>
+                                    <div class="source-copy">
+                                        <b>Generator</b>
+                                        <span>Kept for backup instead of running all day.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="power-arrows" aria-hidden="true">
+                                <span>→</span>
+                                <span>→</span>
+                                <span>→</span>
+                            </div>
+
+                            <div class="factory-hub">
+                                <div class="factory-icon">▦</div>
+                                <small>Power goes here</small>
+                                <h3>Your Pure Water Factory</h3>
+                                <div class="machine-list">
+                                    <span>Water pumps</span>
+                                    <span>Treatment system</span>
+                                    <span>Sealing machines</span>
+                                    <span>Lighting</span>
+                                    <span>Essential loads</span>
+                                </div>
                             </div>
                         </div>
 
+                        <div class="visual-result">
+                            <div class="result-icon">↓</div>
+                            <div>
+                                <b>Result: less generator runtime and more predictable production power.</b>
+                                <span>Your exact solar contribution depends on your measured factory load and system size.</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
